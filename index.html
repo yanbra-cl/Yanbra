@@ -1,0 +1,341 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0a1418;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #060d10;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #1a2a30;
+}
+
+.logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    letter-spacing: 6px;
+    color: #4db6ac;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    color: #e8e8e8;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+
+nav a:hover {
+    color: #e8c674;
+}
+
+.hero {
+    height: 85vh;
+    background: radial-gradient(circle at center, #101c21 0%, #0a1418 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #1a2a30;
+}
+
+.hero h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 90px;
+    letter-spacing: 12px;
+    color: #4db6ac;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.hero p {
+    font-size: 14px;
+    color: #b2dfdb;
+    letter-spacing: 5px;
+    margin-bottom: 45px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.btn {
+    background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
+    border: none;
+    color: #060d10;
+    padding: 16px 45px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #4db6ac;
+    color: #060d10;
+}
+
+.catalogo {
+    padding: 90px 40px;
+}
+
+.catalogo h2 {
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 42px;
+    letter-spacing: 8px;
+    color: #ffffff;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.producto {
+    background-color: #101c21;
+    border: 1px solid #1a2a30;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.producto:hover {
+    border-color: #e8c674;
+}
+
+.producto img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #1a2a30;
+}
+
+.producto-info {
+    padding: 20px;
+}
+
+.producto-info h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.precio {
+    color: #e8c674;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.btn-comprar {
+    display: inline-block;
+    background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
+    color: #060d10;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-comprar:hover {
+    background: #4db6ac;
+    color: #060d10;
+}
+
+.contacto {
+    padding: 90px 40px;
+    text-align: center;
+    background-color: #060d10;
+    border-top: 1px solid #1a2a30;
+}
+
+.contacto h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 38px;
+    letter-spacing: 8px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.contacto p {
+    color: #b2dfdb;
+    margin-bottom: 35px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.botones-contacto {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.whatsapp,
+.instagram,
+.tiktok {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #e8c674;
+    color: #e8c674;
+    padding: 16px 35px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.whatsapp:hover,
+.instagram:hover,
+.tiktok:hover {
+    background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
+    color: #060d10;
+    border-color: #e8c674;
+}
+
+footer {
+    background-color: #060d10;
+    padding: 30px;
+    text-align: center;
+    color: #5a7a80;
+    font-size: 11px;
+    letter-spacing: 3px;
+    border-top: 1px solid #1a2a30;
+    text-transform: uppercase;
+}
+
+footer span {
+    color: #e8c674;
+}
+</style>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">YANBRA</div>
+    <nav>
+        <a href="https://instagram.com/yanbra.cl" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+        </a>
+        <a href="https://tiktok.com/@yanbra.cl" target="_blank" aria-label="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
+        </a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>YANBRA</h1>
+    <p>Ropa urbana · Estilo sin límites</p>
+    <a href="#catalogo" class="btn">Ver catálogo</a>
+</section>
+
+<!-- CATÁLOGO -->
+<section class="catalogo" id="catalogo">
+    <h2>Catálogo</h2>
+    <div class="grid">
+        
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Polera+1" alt="Polera">
+            <div class="producto-info">
+                <h3>Polera Oversize</h3>
+                <p class="precio">$19.990</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20la%20polera%20oversize" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie">
+            <div class="producto-info">
+                <h3>Hoodie Petróleo</h3>
+                <p class="precio">$34.990</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20hoodie" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Jogger" alt="Jogger">
+            <div class="producto-info">
+                <h3>Jogger Urbano</h3>
+                <p class="precio">$27.990</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20jogger" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Gorra" alt="Gorra">
+            <div class="producto-info">
+                <h3>Gorra Snapback</h3>
+                <p class="precio">$14.990</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20la%20gorra" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+    <h2>Contacto</h2>
+    <p>Pedidos por WhatsApp · Envíos a todo Chile</p>
+    <div class="botones-contacto">
+        <a href="https://wa.me/56964116833" class="whatsapp">WhatsApp</a>
+        <a href="https://instagram.com/yanbra.cl" target="_blank" class="instagram">Instagram</a>
+        <a href="https://tiktok.com/@yanbra.cl" target="_blank" class="tiktok">TikTok</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2025 <span>Yanbra</span> · Todos los derechos reservados
+</footer>
