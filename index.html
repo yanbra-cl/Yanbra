@@ -67,7 +67,7 @@ nav a:hover {
 
 .marquesina p {
     display: inline-block;
-    padding-left: 100%;
+    padding-left: 0%;
     animation: marquesina 40s linear infinite;
     font-size: 13px;
     font-weight: 700;
@@ -171,6 +171,7 @@ nav a:hover {
     height: 300px;
     object-fit: cover;
     background-color: #1a2a30;
+    cursor: pointer;
 }
 
 .producto-info {
@@ -223,6 +224,7 @@ nav a:hover {
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
+    cursor: pointer;
 }
 
 .galeria-miniaturas {
@@ -249,6 +251,50 @@ nav a:hover {
 .galeria-miniaturas img.activa {
     border-color: #e8c674;
     opacity: 1;
+}
+
+/* LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.lightbox.abierto {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    cursor: default;
+    border: 2px solid #e8c674;
+}
+
+.cerrar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #e8c674;
+    cursor: pointer;
+    font-weight: 300;
+    line-height: 1;
+    transition: color 0.3s;
+}
+
+.cerrar:hover {
+    color: #e8b5cc;
 }
 
 .contacto {
@@ -355,7 +401,7 @@ footer span {
 
 <!-- MARQUESINA -->
 <div class="marquesina">
-    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
+    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
 <!-- HERO -->
@@ -371,7 +417,7 @@ footer span {
     <div class="grid">
         
         <div class="producto animar">
-            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Polera+1" alt="Polera">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Polera+1" alt="Polera" onclick="abrirLightbox(this)">
             <div class="producto-info">
                 <h3>Polera Oversize</h3>
                 <p class="precio">$19.990</p>
@@ -380,7 +426,7 @@ footer span {
         </div>
 
         <div class="producto animar">
-            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie" onclick="abrirLightbox(this)">
             <div class="producto-info">
                 <h3>Hoodie Petróleo</h3>
                 <p class="precio">$34.990</p>
@@ -390,7 +436,7 @@ footer span {
 
         <div class="producto animar">
             <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie">
+                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this)">
                 <div class="galeria-miniaturas">
                     <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
                     <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
@@ -405,7 +451,7 @@ footer span {
         </div>
 
         <div class="producto animar">
-            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Gorra" alt="Gorra">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Gorra" alt="Gorra" onclick="abrirLightbox(this)">
             <div class="producto-info">
                 <h3>Gorra Snapback</h3>
                 <p class="precio">$14.990</p>
@@ -415,6 +461,12 @@ footer span {
 
     </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
+    <span class="cerrar" onclick="cerrarLightbox(event)">×</span>
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
 
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
@@ -456,5 +508,18 @@ function cambiarFoto(idPrincipal, miniatura) {
     miniaturas.forEach(img => img.classList.remove('activa'));
     
     miniatura.classList.add('activa');
+}
+
+// Lightbox (abrir foto en grande)
+function abrirLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightbox.classList.add('abierto');
+}
+
+function cerrarLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('abierto');
 }
 </script>
