@@ -211,6 +211,45 @@ nav a:hover {
     color: #060d10;
 }
 
+/* GALERÍA DE FOTOS */
+.galeria {
+    width: 100%;
+}
+
+.galeria-principal {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #1a2a30;
+    display: block;
+}
+
+.galeria-miniaturas {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background-color: #0a1418;
+}
+
+.galeria-miniaturas img {
+    width: calc(33.33% - 6px);
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+    opacity: 0.6;
+}
+
+.galeria-miniaturas img:hover {
+    opacity: 1;
+}
+
+.galeria-miniaturas img.activa {
+    border-color: #e8c674;
+    opacity: 1;
+}
+
 .contacto {
     padding: 90px 40px;
     text-align: center;
@@ -349,11 +388,18 @@ footer span {
         </div>
 
         <div class="producto animar">
-            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Jogger" alt="Jogger">
+            <div class="galeria">
+                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie">
+                <div class="galeria-miniaturas">
+                    <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
+                    <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
+                    <img src="https://i.ibb.co/GQy47Vsf/IMG-3118.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 3">
+                </div>
+            </div>
             <div class="producto-info">
-                <h3>Jogger Urbano</h3>
+                <h3>Short Baggie</h3>
                 <p class="precio">$27.990</p>
-                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20jogger" class="btn-comprar">Comprar</a>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20short%20baggie" class="btn-comprar">Comprar</a>
             </div>
         </div>
 
@@ -386,6 +432,7 @@ footer span {
 </footer>
 
 <script>
+// Animaciones al bajar
 const elementos = document.querySelectorAll('.animar');
 
 const observer = new IntersectionObserver((entries) => {
@@ -399,4 +446,14 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 elementos.forEach(el => observer.observe(el));
+
+// Cambiar foto de galería
+function cambiarFoto(idPrincipal, miniatura) {
+    document.getElementById(idPrincipal).src = miniatura.src;
+    
+    const miniaturas = miniatura.parentElement.querySelectorAll('img');
+    miniaturas.forEach(img => img.classList.remove('activa'));
+    
+    miniatura.classList.add('activa');
+}
 </script>
