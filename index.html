@@ -279,6 +279,18 @@ footer {
 footer span {
     color: #e8c674;
 }
+
+/* ANIMACIONES AL BAJAR */
+.animar {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.animar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 </style>
 
 <!-- HEADER -->
@@ -303,7 +315,7 @@ footer span {
 
 <!-- MARQUESINA -->
 <div class="marquesina">
-    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
+    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
 <!-- HERO -->
@@ -315,10 +327,10 @@ footer span {
 
 <!-- CATÁLOGO -->
 <section class="catalogo" id="catalogo">
-    <h2>Catálogo</h2>
+    <h2 class="animar">Catálogo</h2>
     <div class="grid">
         
-        <div class="producto">
+        <div class="producto animar">
             <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Polera+1" alt="Polera">
             <div class="producto-info">
                 <h3>Polera Oversize</h3>
@@ -327,7 +339,7 @@ footer span {
             </div>
         </div>
 
-        <div class="producto">
+        <div class="producto animar">
             <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie">
             <div class="producto-info">
                 <h3>Hoodie Petróleo</h3>
@@ -336,7 +348,7 @@ footer span {
             </div>
         </div>
 
-        <div class="producto">
+        <div class="producto animar">
             <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Jogger" alt="Jogger">
             <div class="producto-info">
                 <h3>Jogger Urbano</h3>
@@ -345,7 +357,7 @@ footer span {
             </div>
         </div>
 
-        <div class="producto">
+        <div class="producto animar">
             <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Gorra" alt="Gorra">
             <div class="producto-info">
                 <h3>Gorra Snapback</h3>
@@ -359,9 +371,9 @@ footer span {
 
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
-    <h2>Contacto</h2>
-    <p>Pedidos por WhatsApp · Envíos a todo Chile</p>
-    <div class="botones-contacto">
+    <h2 class="animar">Contacto</h2>
+    <p class="animar">Pedidos por WhatsApp · Envíos a todo Chile</p>
+    <div class="botones-contacto animar">
         <a href="https://wa.me/56964116833" class="whatsapp">WhatsApp</a>
         <a href="https://instagram.com/yanbra.cl" target="_blank" class="instagram">Instagram</a>
         <a href="https://tiktok.com/@yanbra.cl" target="_blank" class="tiktok">TikTok</a>
@@ -372,3 +384,19 @@ footer span {
 <footer>
     © 2025 <span>Yanbra</span> · Todos los derechos reservados
 </footer>
+
+<script>
+const elementos = document.querySelectorAll('.animar');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+elementos.forEach(el => observer.observe(el));
+</script>
