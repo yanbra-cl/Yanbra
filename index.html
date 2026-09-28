@@ -23,16 +23,10 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #1a2a30;
+    border-bottom: none;
 }
 
-.logo {
-    font-family: 'Anton', sans-serif;
-    font-size: 32px;
-    letter-spacing: 6px;
-    color: #4db6ac;
-}
-  .logo img {
+.logo img {
     height: 150px;
     width: auto;
     display: block;
@@ -57,7 +51,36 @@ nav a {
 }
 
 nav a:hover {
-    color: #e8c674;
+    color: #e8b5cc;
+}
+
+/* MARQUESINA */
+.marquesina {
+    background-color: #e8b5cc;
+    color: #060d10;
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid #1a2a30;
+}
+
+.marquesina p {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquesina 40s linear infinite;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+@keyframes marquesina {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
 }
 
 .hero {
@@ -105,7 +128,7 @@ nav a:hover {
 }
 
 .btn:hover {
-    background: #4db6ac;
+    background: #e8b5cc;
     color: #060d10;
 }
 
@@ -184,7 +207,7 @@ nav a:hover {
 }
 
 .btn-comprar:hover {
-    background: #4db6ac;
+    background: #e8b5cc;
     color: #060d10;
 }
 
@@ -237,9 +260,9 @@ nav a:hover {
 .whatsapp:hover,
 .instagram:hover,
 .tiktok:hover {
-    background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
+    background: #e8b5cc;
     color: #060d10;
-    border-color: #e8c674;
+    border-color: #e8b5cc;
 }
 
 footer {
@@ -260,7 +283,7 @@ footer span {
 
 <!-- HEADER -->
 <header>
-    <div class="logo"><img src=https://i.ibb.co/v4tGFywN/IMG-3111.png></div>
+    <div class="logo"><img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra"></div>
     <nav>
         <a href="https://instagram.com/yanbra.cl" target="_blank" aria-label="Instagram">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -277,6 +300,11 @@ footer span {
         <a href="#contacto">Contacto</a>
     </nav>
 </header>
+
+<!-- MARQUESINA -->
+<div class="marquesina">
+    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
+</div>
 
 <!-- HERO -->
 <section class="hero">
