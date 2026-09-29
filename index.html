@@ -11,8 +11,6 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
     height: 100%;
 }
 
@@ -21,6 +19,7 @@ body {
     color: #ffffff;
     line-height: 1.6;
     height: 100%;
+    overflow-x: hidden;
 }
 
 /* SPLASH SCREEN */
@@ -131,29 +130,19 @@ nav a:hover {
     100% { transform: translateX(-100%); }
 }
 
-/* CONTENEDOR PRINCIPAL CON SCROLL SNAP */
-.main-scroll {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+/* CONTENIDO PRINCIPAL */
+main {
     padding-top: 96px;
-}
-
-/* SECCIONES CON SNAP */
-.seccion {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    min-height: calc(100vh - 96px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
 /* HERO */
 .hero {
+    min-height: calc(100vh - 96px);
     background: radial-gradient(circle at center, #101c21 0%, #0a1418 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 20px;
 }
@@ -197,9 +186,8 @@ nav a:hover {
 
 /* CATÁLOGO CARRUSEL */
 .catalogo-seccion {
-    padding: 0;
-    overflow: hidden;
-    justify-content: flex-start;
+    padding: 20px 0 30px 0;
+    background-color: #0a1418;
 }
 
 .catalogo-titulo {
@@ -209,8 +197,7 @@ nav a:hover {
     color: #ffffff;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 8px;
-    margin-top: 8px;
+    margin-bottom: 15px;
 }
 
 .carrusel {
@@ -253,7 +240,7 @@ nav a:hover {
 
 .galeria-principal {
     width: 100%;
-    height: 48vh;
+    height: 45vh;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -262,7 +249,7 @@ nav a:hover {
 
 .producto-simple {
     width: 100%;
-    height: 48vh;
+    height: 45vh;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -336,8 +323,7 @@ nav a:hover {
     display: flex;
     gap: 8px;
     justify-content: center;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 12px;
 }
 
 .carrusel-puntito {
@@ -355,9 +341,14 @@ nav a:hover {
 
 /* CONTACTO */
 .contacto-seccion {
+    min-height: calc(100vh - 96px);
     text-align: center;
     background-color: #060d10;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .contacto-seccion h2 {
@@ -546,10 +537,10 @@ nav a:hover {
         font-size: 9px;
         line-height: 24px;
     }
-    .main-scroll {
+    main {
         padding-top: 84px;
     }
-    .seccion {
+    .hero {
         min-height: calc(100vh - 84px);
     }
     .hero h1 {
@@ -558,8 +549,7 @@ nav a:hover {
     }
     .catalogo-titulo {
         font-size: 18px;
-        margin-bottom: 6px;
-        margin-top: 6px;
+        margin-bottom: 12px;
     }
     .galeria-principal,
     .producto-simple {
@@ -581,6 +571,9 @@ nav a:hover {
     .btn-comprar {
         padding: 10px 24px;
         font-size: 10px;
+    }
+    .contacto-seccion {
+        min-height: calc(100vh - 84px);
     }
     .contacto-seccion h2 {
         font-size: 28px;
@@ -619,18 +612,18 @@ nav a:hover {
     <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
-<!-- MAIN SCROLL (con scroll snap) -->
-<div class="main-scroll">
+<!-- CONTENIDO -->
+<main>
 
     <!-- HERO -->
-    <section class="seccion hero" id="inicio">
+    <section class="hero" id="inicio">
         <h1>YANBRA</h1>
         <p>Ropa chilena · Estilo sin límites</p>
         <a href="#catalogo" class="btn">Ver catálogo</a>
     </section>
 
     <!-- CATÁLOGO CARRUSEL -->
-    <section class="seccion catalogo-seccion" id="catalogo">
+    <section class="catalogo-seccion" id="catalogo">
         <h2 class="catalogo-titulo">Catálogo</h2>
         
         <div class="carrusel" id="carrusel">
@@ -711,7 +704,7 @@ nav a:hover {
     </section>
 
     <!-- CONTACTO -->
-    <section class="seccion contacto-seccion" id="contacto">
+    <section class="contacto-seccion" id="contacto">
         <h2>Contacto</h2>
         <p>Envíos a todo Chile</p>
         <div class="botones-contacto">
@@ -721,7 +714,7 @@ nav a:hover {
         </div>
     </section>
 
-</div>
+</main>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
