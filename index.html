@@ -281,9 +281,9 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 15px;
     z-index: 10;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
 }
 
 .lightbox-titulo {
@@ -320,12 +320,12 @@ nav a:hover {
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 60px 10px 80px 10px;
+    padding: 45px 5px 55px 5px;
 }
 
 .lightbox img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 98%;
+    max-height: 98%;
     object-fit: contain;
     cursor: default;
     border: 2px solid #e8c674;
@@ -596,7 +596,7 @@ footer span {
             <span class="cerrar" onclick="cerrarLightbox(event)">×</span>
         </div>
     </div>
-    <div class="lightbox-contenedor" onclick="event.stopPropagation()">
+    <div class="lightbox-contenedor">
         <span class="flecha flecha-izq" onclick="cambiarFotoLightbox(-1)">‹</span>
         <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
         <span class="flecha flecha-der" onclick="cambiarFotoLightbox(1)">›</span>
