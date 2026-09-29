@@ -108,22 +108,24 @@ nav a:hover {
     overflow: hidden;
     white-space: nowrap;
     z-index: 99;
+    display: flex;
 }
 
 .marquesina p {
     display: inline-block;
     padding-left: 0%;
-    animation: marquesina 60s linear infinite;
+    animation: marquesina 80s linear infinite;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    min-width: 100%;
+    flex-shrink: 0;
+    padding-right: 40px;
 }
 
 @keyframes marquesina {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
 /* CONTENEDOR PRINCIPAL CON SCROLL SNAP */
@@ -194,16 +196,17 @@ nav a:hover {
 .catalogo-seccion {
     padding: 0;
     overflow: hidden;
+    justify-content: flex-start;
 }
 
 .catalogo-titulo {
     font-family: 'Anton', sans-serif;
-    font-size: 28px;
+    font-size: 24px;
     letter-spacing: 6px;
     color: #ffffff;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 10px;
 }
 
@@ -226,7 +229,7 @@ nav a:hover {
     flex: 0 0 100%;
     width: 100%;
     scroll-snap-align: center;
-    padding: 0 15px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -235,9 +238,9 @@ nav a:hover {
 
 .producto-inner {
     background-color: #101c21;
-    border: 1px solid #1a2a30;
+    border: none;
     width: 100%;
-    max-width: 500px;
+    max-width: 100%;
     overflow: hidden;
 }
 
@@ -247,7 +250,7 @@ nav a:hover {
 
 .galeria-principal {
     width: 100%;
-    height: 380px;
+    height: 65vh;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -256,7 +259,7 @@ nav a:hover {
 
 .producto-simple {
     width: 100%;
-    height: 380px;
+    height: 65vh;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -272,7 +275,7 @@ nav a:hover {
 
 .galeria-miniaturas img {
     width: calc(33.33% - 4px);
-    height: 60px;
+    height: 80px;
     object-fit: cover;
     cursor: pointer;
     border: 2px solid transparent;
@@ -286,24 +289,24 @@ nav a:hover {
 }
 
 .producto-info {
-    padding: 18px;
+    padding: 12px;
     text-align: center;
 }
 
 .producto-info h3 {
     font-family: 'Anton', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 2px;
     color: #ffffff;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     text-transform: uppercase;
 }
 
 .precio {
     color: #e8c674;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     letter-spacing: 1px;
 }
 
@@ -311,9 +314,9 @@ nav a:hover {
     display: inline-block;
     background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
     color: #060d10;
-    padding: 14px 35px;
+    padding: 12px 30px;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
     font-weight: 700;
     text-transform: uppercase;
@@ -330,7 +333,8 @@ nav a:hover {
     display: flex;
     gap: 8px;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 10px;
+    margin-bottom: 8px;
 }
 
 .carrusel-puntito {
@@ -544,18 +548,12 @@ nav a:hover {
         letter-spacing: 8px;
     }
     .catalogo-titulo {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-    .producto {
-        padding: 0 8px;
-    }
-    .producto-inner {
-        max-width: 95%;
+        font-size: 20px;
+        margin-bottom: 8px;
     }
     .galeria-principal,
     .producto-simple {
-        height: 350px;
+        height: 58vh;
     }
     .contacto-seccion h2 {
         font-size: 28px;
@@ -590,7 +588,8 @@ nav a:hover {
 
 <!-- MARQUESINA -->
 <div class="marquesina">
-    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
+    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
+    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
 <!-- MAIN SCROLL (con scroll snap) -->
@@ -734,7 +733,6 @@ const carrusel = document.getElementById('carrusel');
 const productos = carrusel.querySelectorAll('.producto');
 const puntitosCarrusel = document.getElementById('carrusel-puntitos');
 
-// Crear puntitos
 productos.forEach((producto, i) => {
     const puntito = document.createElement('div');
     puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
@@ -744,7 +742,6 @@ productos.forEach((producto, i) => {
     puntitosCarrusel.appendChild(puntito);
 });
 
-// Actualizar puntitos al hacer scroll
 carrusel.addEventListener('scroll', () => {
     const anchoProducto = carrusel.clientWidth;
     const indice = Math.round(carrusel.scrollLeft / anchoProducto);
