@@ -15,6 +15,47 @@ body {
     line-height: 1.6;
 }
 
+/* SPLASH SCREEN */
+.splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #060d10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.splash.oculto {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.splash img {
+    width: 200px;
+    height: auto;
+    animation: splashZoom 1.5s ease-in-out forwards;
+}
+
+@keyframes splashZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
 header {
     background-color: #060d10;
     padding: 20px 40px;
@@ -483,8 +524,16 @@ footer span {
     .lightbox-titulo {
         font-size: 13px;
     }
+    .splash img {
+        width: 150px;
+    }
 }
 </style>
+
+<!-- SPLASH SCREEN -->
+<div class="splash" id="splash">
+    <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra">
+</div>
 
 <!-- HEADER -->
 <header>
@@ -652,44 +701,37 @@ function cambiarFoto(idPrincipal, miniatura) {
 // LIGHTBOX CON SWIPE
 // ================================
 
-let fotosActuales = [];       // Array de fotos del producto actual
-let indiceActual = 0;         // Índice de la foto actual
-let tituloActual = '';        // Título del producto
+let fotosActuales = [];
+let indiceActual = 0;
+let tituloActual = '';
 
-// Abrir lightbox
 function abrirLightbox(img, titulo) {
     const lightbox = document.getElementById('lightbox');
     tituloActual = titulo || '';
     
-    // Detectar las fotos del grupo
     const galeria = img.closest('.galeria');
     
     if (galeria) {
-        // Si está dentro de una galería, usar todas las miniaturas
         const miniaturas = galeria.querySelectorAll('.galeria-miniaturas img');
         fotosActuales = Array.from(miniaturas).map(m => m.src);
-        // Encontrar el índice de la foto que tocó
         indiceActual = fotosActuales.indexOf(img.src);
         if (indiceActual === -1) indiceActual = 0;
     } else {
-        // Si es un producto sin galería, solo esa foto
         fotosActuales = [img.src];
         indiceActual = 0;
     }
     
     actualizarLightbox();
     lightbox.classList.add('abierto');
-    document.body.style.overflow = 'hidden'; // Bloquear scroll de fondo
+    document.body.style.overflow = 'hidden';
 }
 
-// Cerrar lightbox
 function cerrarLightbox() {
     const lightbox = document.getElementById('lightbox');
     lightbox.classList.remove('abierto');
-    document.body.style.overflow = ''; // Reactivar scroll
+    document.body.style.overflow = '';
 }
 
-// Cambiar foto en lightbox (flechas)
 function cambiarFotoLightbox(direccion) {
     indiceActual += direccion;
     
@@ -699,24 +741,16 @@ function cambiarFotoLightbox(direccion) {
     actualizarLightbox();
 }
 
-// Ir a una foto específica (puntitos)
 function irAFoto(indice) {
     indiceActual = indice;
     actualizarLightbox();
 }
 
-// Actualizar todo el lightbox
 function actualizarLightbox() {
-    // Imagen
     document.getElementById('lightbox-img').src = fotosActuales[indiceActual];
-    
-    // Título
     document.getElementById('lightbox-titulo').textContent = tituloActual;
-    
-    // Contador
     document.getElementById('lightbox-contador').textContent = (indiceActual + 1) + ' / ' + fotosActuales.length;
     
-    // Puntitos
     const puntitosContainer = document.getElementById('lightbox-puntitos');
     puntitosContainer.innerHTML = '';
     
@@ -730,20 +764,15 @@ function actualizarLightbox() {
         puntitosContainer.appendChild(puntito);
     });
     
-    // Ocultar flechas si solo hay 1 foto
     const flechas = document.querySelectorAll('.flecha');
     flechas.forEach(f => {
         f.style.display = fotosActuales.length > 1 ? 'block' : 'none';
     });
 }
 
-// ================================
-// SWIPE (deslizar)
-// ================================
+// SWIPE
 let touchStartX = 0;
 let touchEndX = 0;
-
-const lightboxContenedor = document.querySelector('.lightbox-contenedor');
 
 document.addEventListener('touchstart', (e) => {
     const lightbox = document.getElementById('lightbox');
@@ -762,20 +791,16 @@ document.addEventListener('touchend', (e) => {
 
 function manejarSwipe() {
     const diferencia = touchEndX - touchStartX;
-    const umbral = 50; // Mínimo de píxeles para considerar swipe
+    const umbral = 50;
     
     if (diferencia > umbral) {
-        // Swipe a la derecha → foto anterior
         cambiarFotoLightbox(-1);
     } else if (diferencia < -umbral) {
-        // Swipe a la izquierda → foto siguiente
         cambiarFotoLightbox(1);
     }
 }
 
-// ================================
-// TECLADO (para compu)
-// ================================
+// TECLADO
 document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightbox');
     if (!lightbox.classList.contains('abierto')) return;
@@ -783,5 +808,16 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') cambiarFotoLightbox(-1);
     if (e.key === 'ArrowRight') cambiarFotoLightbox(1);
     if (e.key === 'Escape') cerrarLightbox();
+});
+
+// ================================
+// SPLASH SCREEN
+// ================================
+window.addEventListener('load', () => {
+    const splash = document.getElementById('splash');
+    
+    setTimeout(() => {
+        splash.classList.add('oculto');
+    }, 1500);
 });
 </script>
