@@ -9,10 +9,18 @@
     font-family: 'Inter', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+}
+
 body {
     background-color: #0a1418;
     color: #ffffff;
     line-height: 1.6;
+    height: 100%;
 }
 
 /* SPLASH SCREEN */
@@ -42,34 +50,26 @@ body {
 }
 
 @keyframes splashZoom {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    30% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.15);
-    }
+    0% { opacity: 0; transform: scale(0.5); }
+    30% { opacity: 1; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.15); }
 }
 
 header {
     background-color: #060d10;
-    padding: 20px 40px;
+    padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
-    border-bottom: none;
 }
 
 .logo img {
-    height: 150px;
+    height: 60px;
     width: auto;
     display: block;
 }
@@ -77,13 +77,13 @@ header {
 nav {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
 }
 
 nav a {
     color: #e8e8e8;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
     font-weight: 600;
     text-transform: uppercase;
@@ -98,48 +98,63 @@ nav a:hover {
 
 /* MARQUESINA */
 .marquesina {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    right: 0;
     background-color: #e8b5cc;
     color: #060d10;
-    padding: 12px 0;
+    padding: 8px 0;
     overflow: hidden;
     white-space: nowrap;
-    border-bottom: 1px solid #1a2a30;
+    z-index: 99;
 }
 
 .marquesina p {
     display: inline-block;
     padding-left: 0%;
     animation: marquesina 40s linear infinite;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
 @keyframes marquesina {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-100%, 0);
-    }
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
 }
 
-.hero {
-    height: 90vh;
-    background: radial-gradient(circle at center, #101c21 0%, #0a1418 100%);
+/* CONTENEDOR PRINCIPAL CON SCROLL SNAP */
+.main-scroll {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    padding-top: 120px;
+}
+
+/* SECCIONES CON SNAP */
+.seccion {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+/* HERO */
+.hero {
+    background: radial-gradient(circle at center, #101c21 0%, #0a1418 100%);
     text-align: center;
     padding: 20px;
-    border-bottom: 1px solid #1a2a30;
 }
 
 .hero h1 {
     font-family: 'Anton', sans-serif;
-    font-size: 120px;
+    font-size: 100px;
     letter-spacing: 12px;
     color: #4db6ac;
     margin-bottom: 15px;
@@ -147,10 +162,10 @@ nav a:hover {
 }
 
 .hero p {
-    font-size: 16px;
+    font-size: 14px;
     color: #b2dfdb;
     letter-spacing: 5px;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
     text-transform: uppercase;
     font-weight: 300;
 }
@@ -159,8 +174,8 @@ nav a:hover {
     background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
     border: none;
     color: #060d10;
-    padding: 20px 55px;
-    font-size: 13px;
+    padding: 18px 45px;
+    font-size: 12px;
     letter-spacing: 3px;
     cursor: pointer;
     text-decoration: none;
@@ -174,65 +189,120 @@ nav a:hover {
     color: #060d10;
 }
 
-.catalogo {
-    padding: 90px 40px;
+/* CATÁLOGO CARRUSEL */
+.catalogo-seccion {
+    padding: 0;
+    overflow: hidden;
 }
 
-.catalogo h2 {
-    text-align: center;
+.catalogo-titulo {
     font-family: 'Anton', sans-serif;
-    font-size: 42px;
-    letter-spacing: 8px;
+    font-size: 28px;
+    letter-spacing: 6px;
     color: #ffffff;
-    margin-bottom: 60px;
     text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
+.carrusel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.carrusel::-webkit-scrollbar {
+    display: none;
 }
 
 .producto {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: center;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0a1418;
+}
+
+.producto-inner {
     background-color: #101c21;
     border: 1px solid #1a2a30;
-    overflow: hidden;
-    transition: border-color 0.3s;
-}
-
-.producto:hover {
-    border-color: #e8c674;
-}
-
-.producto img {
     width: 100%;
-    height: 300px;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.galeria {
+    width: 100%;
+}
+
+.galeria-principal {
+    width: 100%;
+    height: 320px;
     object-fit: cover;
     background-color: #1a2a30;
+    display: block;
     cursor: pointer;
 }
 
+.producto-simple {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    background-color: #1a2a30;
+    display: block;
+    cursor: pointer;
+}
+
+.galeria-miniaturas {
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    background-color: #0a1418;
+}
+
+.galeria-miniaturas img {
+    width: calc(33.33% - 4px);
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+    opacity: 0.6;
+}
+
+.galeria-miniaturas img.activa {
+    border-color: #e8c674;
+    opacity: 1;
+}
+
 .producto-info {
-    padding: 20px;
+    padding: 15px;
+    text-align: center;
 }
 
 .producto-info h3 {
     font-family: 'Anton', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 2px;
     color: #ffffff;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-transform: uppercase;
 }
 
 .precio {
     color: #e8c674;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     letter-spacing: 1px;
 }
 
@@ -240,7 +310,7 @@ nav a:hover {
     display: inline-block;
     background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
     color: #060d10;
-    padding: 12px 24px;
+    padding: 12px 30px;
     text-decoration: none;
     font-size: 11px;
     letter-spacing: 2px;
@@ -254,44 +324,79 @@ nav a:hover {
     color: #060d10;
 }
 
-/* GALERÍA DE FOTOS */
-.galeria {
-    width: 100%;
-}
-
-.galeria-principal {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    background-color: #1a2a30;
-    display: block;
-    cursor: pointer;
-}
-
-.galeria-miniaturas {
+/* PUNTITOS DEL CARRUSEL */
+.carrusel-puntitos {
     display: flex;
     gap: 8px;
-    padding: 10px;
-    background-color: #0a1418;
+    justify-content: center;
+    margin-top: 15px;
 }
 
-.galeria-miniaturas img {
-    width: calc(33.33% - 6px);
-    height: 60px;
-    object-fit: cover;
+.carrusel-puntito {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
-    opacity: 0.6;
+    transition: background-color 0.3s;
 }
 
-.galeria-miniaturas img:hover {
-    opacity: 1;
+.carrusel-puntito.activo {
+    background-color: #e8c674;
 }
 
-.galeria-miniaturas img.activa {
-    border-color: #e8c674;
-    opacity: 1;
+/* CONTACTO */
+.contacto-seccion {
+    text-align: center;
+    background-color: #060d10;
+    padding: 20px;
+}
+
+.contacto-seccion h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 34px;
+    letter-spacing: 8px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.contacto-seccion p {
+    color: #b2dfdb;
+    margin-bottom: 30px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.botones-contacto {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.whatsapp,
+.instagram,
+.tiktok {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #e8c674;
+    color: #e8c674;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 11px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.whatsapp:hover,
+.instagram:hover,
+.tiktok:hover {
+    background: #e8b5cc;
+    color: #060d10;
+    border-color: #e8b5cc;
 }
 
 /* LIGHTBOX */
@@ -348,11 +453,6 @@ nav a:hover {
     cursor: pointer;
     font-weight: 300;
     line-height: 1;
-    transition: color 0.3s;
-}
-
-.cerrar:hover {
-    color: #e8b5cc;
 }
 
 .lightbox-contenedor {
@@ -368,7 +468,6 @@ nav a:hover {
     max-width: 98%;
     max-height: 98%;
     object-fit: contain;
-    cursor: default;
     border: 2px solid #e8c674;
 }
 
@@ -380,10 +479,8 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
     padding: 15px 20px;
     z-index: 10;
-    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
 
 .puntitos {
@@ -397,7 +494,6 @@ nav a:hover {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .puntito.activo {
@@ -412,120 +508,49 @@ nav a:hover {
     color: #e8c674;
     cursor: pointer;
     padding: 20px;
-    user-select: none;
-    transition: color 0.3s, transform 0.3s;
     z-index: 10;
 }
 
-.flecha:hover {
-    color: #e8b5cc;
-    transform: translateY(-50%) scale(1.2);
-}
-
-.flecha-izq {
-    left: 5px;
-}
-
-.flecha-der {
-    right: 5px;
-}
-
-/* CONTACTO */
-.contacto {
-    padding: 90px 40px;
-    text-align: center;
-    background-color: #060d10;
-    border-top: 1px solid #1a2a30;
-}
-
-.contacto h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 38px;
-    letter-spacing: 8px;
-    color: #ffffff;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-}
-
-.contacto p {
-    color: #b2dfdb;
-    margin-bottom: 35px;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-.botones-contacto {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.whatsapp,
-.instagram,
-.tiktok {
-    display: inline-block;
-    background: transparent;
-    border: 1px solid #e8c674;
-    color: #e8c674;
-    padding: 16px 35px;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 3px;
-    font-size: 12px;
-    text-transform: uppercase;
-    transition: all 0.3s;
-}
-
-.whatsapp:hover,
-.instagram:hover,
-.tiktok:hover {
-    background: #e8b5cc;
-    color: #060d10;
-    border-color: #e8b5cc;
-}
-
-footer {
-    background-color: #060d10;
-    padding: 30px;
-    text-align: center;
-    color: #5a7a80;
-    font-size: 11px;
-    letter-spacing: 3px;
-    border-top: 1px solid #1a2a30;
-    text-transform: uppercase;
-}
-
-footer span {
-    color: #e8c674;
-}
-
-/* ANIMACIONES AL BAJAR */
-.animar {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.animar.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.flecha-izq { left: 5px; }
+.flecha-der { right: 5px; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .lightbox img {
-        border-width: 1px;
+    header {
+        padding: 10px 15px;
     }
-    .flecha {
-        font-size: 32px;
-        padding: 15px;
+    .logo img {
+        height: 50px;
     }
-    .lightbox-titulo {
-        font-size: 13px;
+    nav {
+        gap: 12px;
     }
-    .splash img {
-        width: 150px;
+    nav a {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    .marquesina {
+        top: 70px;
+    }
+    .main-scroll {
+        padding-top: 100px;
+    }
+    .seccion {
+        min-height: calc(100vh - 100px);
+    }
+    .hero h1 {
+        font-size: 70px;
+        letter-spacing: 8px;
+    }
+    .catalogo-titulo {
+        font-size: 22px;
+    }
+    .galeria-principal,
+    .producto-simple {
+        height: 280px;
+    }
+    .contacto-seccion h2 {
+        font-size: 28px;
     }
 }
 </style>
@@ -540,14 +565,14 @@ footer span {
     <div class="logo"><img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra"></div>
     <nav>
         <a href="https://instagram.com/yanbra.cl" target="_blank" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
             </svg>
         </a>
         <a href="https://tiktok.com/@yanbra.cl" target="_blank" aria-label="TikTok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
             </svg>
         </a>
@@ -560,81 +585,109 @@ footer span {
     <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-    <h1>YANBRA</h1>
-    <p>Ropa chilena · Estilo sin límites</p>
-    <a href="#catalogo" class="btn">Ver catálogo</a>
-</section>
+<!-- MAIN SCROLL (con scroll snap) -->
+<div class="main-scroll">
 
-<!-- CATÁLOGO -->
-<section class="catalogo" id="catalogo">
-    <h2 class="animar">Catálogo</h2>
-    <div class="grid">
+    <!-- HERO -->
+    <section class="seccion hero" id="inicio">
+        <h1>YANBRA</h1>
+        <p>Ropa chilena · Estilo sin límites</p>
+        <a href="#catalogo" class="btn">Ver catálogo</a>
+    </section>
+
+    <!-- CATÁLOGO CARRUSEL -->
+    <section class="seccion catalogo-seccion" id="catalogo">
+        <h2 class="catalogo-titulo">Catálogo</h2>
         
-        <!-- POLERA -->
-        <div class="producto animar">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-polera" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" alt="Polera Oversize" onclick="abrirLightbox(this, 'Polera Oversize')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 1">
-                    <img src="https://i.ibb.co/x8w7dt5s/AF8-DF5-B8-AF8-A-4190-AE77-94-DAD7-C203-B4.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 2">
-                    <img src="https://i.ibb.co/RGJdfDGY/CAMISETA3.png" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 3">
+        <div class="carrusel" id="carrusel">
+            
+            <!-- POLERA -->
+            <div class="producto">
+                <div class="producto-inner">
+                    <div class="galeria">
+                        <img class="galeria-principal" id="foto-principal-polera" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" alt="Polera Oversize" onclick="abrirLightbox(this, 'Polera Oversize')">
+                        <div class="galeria-miniaturas">
+                            <img class="activa" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 1">
+                            <img src="https://i.ibb.co/x8w7dt5s/AF8-DF5-B8-AF8-A-4190-AE77-94-DAD7-C203-B4.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 2">
+                            <img src="https://i.ibb.co/RGJdfDGY/CAMISETA3.png" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 3">
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Polera Oversize</h3>
+                        <p class="precio">$19.990</p>
+                        <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20la%20polera%20oversize" class="btn-comprar">Comprar</a>
+                    </div>
                 </div>
             </div>
-            <div class="producto-info">
-                <h3>Polera Oversize</h3>
-                <p class="precio">$19.990</p>
-                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20la%20polera%20oversize" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
 
-        <!-- HOODIE -->
-        <div class="producto animar">
-            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie" onclick="abrirLightbox(this, 'Hoodie Petróleo')">
-            <div class="producto-info">
-                <h3>Hoodie Petróleo</h3>
-                <p class="precio">$34.990</p>
-                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20hoodie" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
-
-        <!-- SHORT -->
-        <div class="producto animar">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this, 'Short Baggie')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
-                    <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
-                    <img src="https://i.ibb.co/GQy47Vsf/IMG-3118.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 3">
+            <!-- HOODIE -->
+            <div class="producto">
+                <div class="producto-inner">
+                    <img class="producto-simple" src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie" onclick="abrirLightbox(this, 'Hoodie Petróleo')">
+                    <div class="producto-info">
+                        <h3>Hoodie Petróleo</h3>
+                        <p class="precio">$34.990</p>
+                        <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20hoodie" class="btn-comprar">Comprar</a>
+                    </div>
                 </div>
             </div>
-            <div class="producto-info">
-                <h3>Short Baggie</h3>
-                <p class="precio">$27.990</p>
-                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20short%20baggie" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
 
-        <!-- PANTALÓN -->
-        <div class="producto animar">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-pantalon" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" alt="Pantalón Baggie" onclick="abrirLightbox(this, 'Pantalón Baggie')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 1">
-                    <img src="https://i.ibb.co/j9KVqWcG/IMG-3123.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 2">
-                    <img src="https://i.ibb.co/yFZXwDqh/IMG-3122.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 3">
+            <!-- SHORT -->
+            <div class="producto">
+                <div class="producto-inner">
+                    <div class="galeria">
+                        <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this, 'Short Baggie')">
+                        <div class="galeria-miniaturas">
+                            <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
+                            <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
+                            <img src="https://i.ibb.co/GQy47Vsf/IMG-3118.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 3">
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Short Baggie</h3>
+                        <p class="precio">$27.990</p>
+                        <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20short%20baggie" class="btn-comprar">Comprar</a>
+                    </div>
                 </div>
             </div>
-            <div class="producto-info">
-                <h3>Pantalón Baggie</h3>
-                <p class="precio">$30.000</p>
-                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20pantalon%20baggie" class="btn-comprar">Comprar</a>
+
+            <!-- PANTALÓN -->
+            <div class="producto">
+                <div class="producto-inner">
+                    <div class="galeria">
+                        <img class="galeria-principal" id="foto-principal-pantalon" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" alt="Pantalón Baggie" onclick="abrirLightbox(this, 'Pantalón Baggie')">
+                        <div class="galeria-miniaturas">
+                            <img class="activa" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 1">
+                            <img src="https://i.ibb.co/j9KVqWcG/IMG-3123.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 2">
+                            <img src="https://i.ibb.co/yFZXwDqh/IMG-3122.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 3">
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Pantalón Baggie</h3>
+                        <p class="precio">$30.000</p>
+                        <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20pantalon%20baggie" class="btn-comprar">Comprar</a>
+                    </div>
+                </div>
             </div>
+
         </div>
 
-    </div>
-</section>
+        <!-- PUNTITOS DEL CARRUSEL -->
+        <div class="carrusel-puntitos" id="carrusel-puntitos"></div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="seccion contacto-seccion" id="contacto">
+        <h2>Contacto</h2>
+        <p>Envíos a todo Chile</p>
+        <div class="botones-contacto">
+            <a href="https://wa.me/56964116833" class="whatsapp">WhatsApp</a>
+            <a href="https://instagram.com/yanbra.cl" target="_blank" class="instagram">Instagram</a>
+            <a href="https://tiktok.com/@yanbra.cl" target="_blank" class="tiktok">TikTok</a>
+        </div>
+    </section>
+
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
@@ -655,52 +708,58 @@ footer span {
     </div>
 </div>
 
-<!-- CONTACTO -->
-<section class="contacto" id="contacto">
-    <h2 class="animar">Contacto</h2>
-    <p class="animar">Envíos a todo Chile</p>
-    <div class="botones-contacto animar">
-        <a href="https://wa.me/56964116833" class="whatsapp">WhatsApp</a>
-        <a href="https://instagram.com/yanbra.cl" target="_blank" class="instagram">Instagram</a>
-        <a href="https://tiktok.com/@yanbra.cl" target="_blank" class="tiktok">TikTok</a>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    © 2025 <span>Yanbra</span> · Todos los derechos reservados
-</footer>
-
 <script>
-// Animaciones al bajar
-const elementos = document.querySelectorAll('.animar');
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, {
-    threshold: 0.15
+// ================================
+// SPLASH SCREEN
+// ================================
+window.addEventListener('load', () => {
+    const splash = document.getElementById('splash');
+    setTimeout(() => {
+        splash.classList.add('oculto');
+    }, 1500);
 });
 
-elementos.forEach(el => observer.observe(el));
+// ================================
+// CARRUSEL - PUNTITOS
+// ================================
+const carrusel = document.getElementById('carrusel');
+const productos = carrusel.querySelectorAll('.producto');
+const puntitosCarrusel = document.getElementById('carrusel-puntitos');
 
-// Cambiar foto de galería
+// Crear puntitos
+productos.forEach((producto, i) => {
+    const puntito = document.createElement('div');
+    puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
+    puntito.onclick = () => {
+        producto.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    };
+    puntitosCarrusel.appendChild(puntito);
+});
+
+// Actualizar puntitos al hacer scroll
+carrusel.addEventListener('scroll', () => {
+    const anchoProducto = carrusel.clientWidth;
+    const indice = Math.round(carrusel.scrollLeft / anchoProducto);
+    
+    const todosPuntitos = puntitosCarrusel.querySelectorAll('.carrusel-puntito');
+    todosPuntitos.forEach((p, i) => {
+        p.classList.toggle('activo', i === indice);
+    });
+});
+
+// ================================
+// CAMBIAR FOTO DE GALERÍA
+// ================================
 function cambiarFoto(idPrincipal, miniatura) {
     document.getElementById(idPrincipal).src = miniatura.src;
-    
     const miniaturas = miniatura.parentElement.querySelectorAll('img');
     miniaturas.forEach(img => img.classList.remove('activa'));
-    
     miniatura.classList.add('activa');
 }
 
 // ================================
 // LIGHTBOX CON SWIPE
 // ================================
-
 let fotosActuales = [];
 let indiceActual = 0;
 let tituloActual = '';
@@ -734,10 +793,8 @@ function cerrarLightbox() {
 
 function cambiarFotoLightbox(direccion) {
     indiceActual += direccion;
-    
     if (indiceActual < 0) indiceActual = fotosActuales.length - 1;
     if (indiceActual >= fotosActuales.length) indiceActual = 0;
-    
     actualizarLightbox();
 }
 
@@ -784,7 +841,6 @@ document.addEventListener('touchstart', (e) => {
 document.addEventListener('touchend', (e) => {
     const lightbox = document.getElementById('lightbox');
     if (!lightbox.classList.contains('abierto')) return;
-    
     touchEndX = e.changedTouches[0].screenX;
     manejarSwipe();
 }, { passive: true });
@@ -792,32 +848,16 @@ document.addEventListener('touchend', (e) => {
 function manejarSwipe() {
     const diferencia = touchEndX - touchStartX;
     const umbral = 50;
-    
-    if (diferencia > umbral) {
-        cambiarFotoLightbox(-1);
-    } else if (diferencia < -umbral) {
-        cambiarFotoLightbox(1);
-    }
+    if (diferencia > umbral) cambiarFotoLightbox(-1);
+    else if (diferencia < -umbral) cambiarFotoLightbox(1);
 }
 
 // TECLADO
 document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightbox');
     if (!lightbox.classList.contains('abierto')) return;
-    
     if (e.key === 'ArrowLeft') cambiarFotoLightbox(-1);
     if (e.key === 'ArrowRight') cambiarFotoLightbox(1);
     if (e.key === 'Escape') cerrarLightbox();
-});
-
-// ================================
-// SPLASH SCREEN
-// ================================
-window.addEventListener('load', () => {
-    const splash = document.getElementById('splash');
-    
-    setTimeout(() => {
-        splash.classList.add('oculto');
-    }, 1500);
 });
 </script>
