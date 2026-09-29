@@ -57,7 +57,7 @@ body {
 
 header {
     background-color: #060d10;
-    padding: 15px 25px;
+    padding: 12px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,10 +66,11 @@ header {
     left: 0;
     right: 0;
     z-index: 100;
+    height: 70px;
 }
 
 .logo img {
-    height: 60px;
+    height: 50px;
     width: auto;
     display: block;
 }
@@ -99,28 +100,30 @@ nav a:hover {
 /* MARQUESINA */
 .marquesina {
     position: fixed;
-    top: 90px;
+    top: 70px;
     left: 0;
     right: 0;
+    height: 26px;
     background-color: #e8b5cc;
     color: #060d10;
-    padding: 8px 0;
     overflow: hidden;
     white-space: nowrap;
     z-index: 99;
     display: flex;
+    align-items: center;
 }
 
 .marquesina p {
     display: inline-block;
     padding-left: 0%;
     animation: marquesina 80s linear infinite;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     flex-shrink: 0;
     padding-right: 40px;
+    line-height: 26px;
 }
 
 @keyframes marquesina {
@@ -133,14 +136,14 @@ nav a:hover {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    padding-top: 120px;
+    padding-top: 96px;
 }
 
 /* SECCIONES CON SNAP */
 .seccion {
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 96px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -201,13 +204,13 @@ nav a:hover {
 
 .catalogo-titulo {
     font-family: 'Anton', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     letter-spacing: 6px;
     color: #ffffff;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 .carrusel {
@@ -250,7 +253,7 @@ nav a:hover {
 
 .galeria-principal {
     width: 100%;
-    height: 58vh;
+    height: 48vh;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -259,7 +262,7 @@ nav a:hover {
 
 .producto-simple {
     width: 100%;
-    height: 58vh;
+    height: 48vh;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -268,14 +271,14 @@ nav a:hover {
 
 .galeria-miniaturas {
     display: flex;
-    gap: 6px;
-    padding: 8px;
+    gap: 5px;
+    padding: 6px;
     background-color: #0a1418;
 }
 
 .galeria-miniaturas img {
     width: calc(33.33% - 4px);
-    height: 70px;
+    height: 60px;
     object-fit: cover;
     cursor: pointer;
     border: 2px solid transparent;
@@ -289,13 +292,13 @@ nav a:hover {
 }
 
 .producto-info {
-    padding: 12px;
+    padding: 10px;
     text-align: center;
 }
 
 .producto-info h3 {
     font-family: 'Anton', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 2px;
     color: #ffffff;
     margin-bottom: 4px;
@@ -304,9 +307,9 @@ nav a:hover {
 
 .precio {
     color: #e8c674;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     letter-spacing: 1px;
 }
 
@@ -314,7 +317,7 @@ nav a:hover {
     display: inline-block;
     background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
     color: #060d10;
-    padding: 12px 30px;
+    padding: 11px 28px;
     text-decoration: none;
     font-size: 11px;
     letter-spacing: 2px;
@@ -333,7 +336,7 @@ nav a:hover {
     display: flex;
     gap: 8px;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-bottom: 8px;
 }
 
@@ -523,9 +526,10 @@ nav a:hover {
 @media (max-width: 768px) {
     header {
         padding: 10px 15px;
+        height: 60px;
     }
     .logo img {
-        height: 50px;
+        height: 45px;
     }
     nav {
         gap: 12px;
@@ -535,25 +539,48 @@ nav a:hover {
         letter-spacing: 1px;
     }
     .marquesina {
-        top: 70px;
+        top: 60px;
+        height: 24px;
+    }
+    .marquesina p {
+        font-size: 9px;
+        line-height: 24px;
     }
     .main-scroll {
-        padding-top: 100px;
+        padding-top: 84px;
     }
     .seccion {
-        min-height: calc(100vh - 100px);
+        min-height: calc(100vh - 84px);
     }
     .hero h1 {
         font-size: 70px;
         letter-spacing: 8px;
     }
     .catalogo-titulo {
-        font-size: 20px;
-        margin-bottom: 8px;
+        font-size: 18px;
+        margin-bottom: 6px;
+        margin-top: 6px;
     }
     .galeria-principal,
     .producto-simple {
-        height: 48vh;
+        height: 42vh;
+    }
+    .galeria-miniaturas img {
+        height: 55px;
+    }
+    .producto-info {
+        padding: 8px;
+    }
+    .producto-info h3 {
+        font-size: 16px;
+    }
+    .precio {
+        font-size: 18px;
+        margin-bottom: 6px;
+    }
+    .btn-comprar {
+        padding: 10px 24px;
+        font-size: 10px;
     }
     .contacto-seccion h2 {
         font-size: 28px;
