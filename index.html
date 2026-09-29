@@ -261,31 +261,48 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.92);
+    background-color: rgba(0, 0, 0, 0.96);
     z-index: 1000;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    cursor: pointer;
+    overflow: hidden;
 }
 
 .lightbox.abierto {
     display: flex;
 }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    cursor: default;
-    border: 2px solid #e8c674;
+.lightbox-cabecera {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+}
+
+.lightbox-titulo {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.lightbox-contador {
+    color: #e8c674;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 .cerrar {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 40px;
+    font-size: 36px;
     color: #e8c674;
     cursor: pointer;
     font-weight: 300;
@@ -297,6 +314,82 @@ nav a:hover {
     color: #e8b5cc;
 }
 
+.lightbox-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 60px 10px 80px 10px;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: default;
+    border: 2px solid #e8c674;
+}
+
+.lightbox-pie {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    z-index: 10;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.puntitos {
+    display: flex;
+    gap: 10px;
+}
+
+.puntito {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.puntito.activo {
+    background-color: #e8c674;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: #e8c674;
+    cursor: pointer;
+    padding: 20px;
+    user-select: none;
+    transition: color 0.3s, transform 0.3s;
+    z-index: 10;
+}
+
+.flecha:hover {
+    color: #e8b5cc;
+    transform: translateY(-50%) scale(1.2);
+}
+
+.flecha-izq {
+    left: 5px;
+}
+
+.flecha-der {
+    right: 5px;
+}
+
+/* CONTACTO */
 .contacto {
     padding: 90px 40px;
     text-align: center;
@@ -377,6 +470,20 @@ footer span {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .lightbox img {
+        border-width: 1px;
+    }
+    .flecha {
+        font-size: 32px;
+        padding: 15px;
+    }
+    .lightbox-titulo {
+        font-size: 13px;
+    }
+}
 </style>
 
 <!-- HEADER -->
@@ -419,7 +526,7 @@ footer span {
         <!-- POLERA -->
         <div class="producto animar">
             <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-polera" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" alt="Polera Oversize" onclick="abrirLightbox(this)">
+                <img class="galeria-principal" id="foto-principal-polera" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" alt="Polera Oversize" onclick="abrirLightbox(this, 'Polera Oversize')">
                 <div class="galeria-miniaturas">
                     <img class="activa" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 1">
                     <img src="https://i.ibb.co/x8w7dt5s/AF8-DF5-B8-AF8-A-4190-AE77-94-DAD7-C203-B4.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 2">
@@ -435,7 +542,7 @@ footer span {
 
         <!-- HOODIE -->
         <div class="producto animar">
-            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie" onclick="abrirLightbox(this)">
+            <img src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie" onclick="abrirLightbox(this, 'Hoodie Petróleo')">
             <div class="producto-info">
                 <h3>Hoodie Petróleo</h3>
                 <p class="precio">$34.990</p>
@@ -446,7 +553,7 @@ footer span {
         <!-- SHORT -->
         <div class="producto animar">
             <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this)">
+                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this, 'Short Baggie')">
                 <div class="galeria-miniaturas">
                     <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
                     <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
@@ -463,7 +570,7 @@ footer span {
         <!-- PANTALÓN -->
         <div class="producto animar">
             <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-pantalon" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" alt="Pantalón Baggie" onclick="abrirLightbox(this)">
+                <img class="galeria-principal" id="foto-principal-pantalon" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" alt="Pantalón Baggie" onclick="abrirLightbox(this, 'Pantalón Baggie')">
                 <div class="galeria-miniaturas">
                     <img class="activa" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 1">
                     <img src="https://i.ibb.co/j9KVqWcG/IMG-3123.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 2">
@@ -482,8 +589,21 @@ footer span {
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
-    <span class="cerrar" onclick="cerrarLightbox(event)">×</span>
-    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+    <div class="lightbox-cabecera">
+        <div class="lightbox-titulo" id="lightbox-titulo"></div>
+        <div style="display:flex; align-items:center; gap:20px;">
+            <div class="lightbox-contador" id="lightbox-contador"></div>
+            <span class="cerrar" onclick="cerrarLightbox(event)">×</span>
+        </div>
+    </div>
+    <div class="lightbox-contenedor" onclick="event.stopPropagation()">
+        <span class="flecha flecha-izq" onclick="cambiarFotoLightbox(-1)">‹</span>
+        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+        <span class="flecha flecha-der" onclick="cambiarFotoLightbox(1)">›</span>
+    </div>
+    <div class="lightbox-pie" onclick="event.stopPropagation()">
+        <div class="puntitos" id="lightbox-puntitos"></div>
+    </div>
 </div>
 
 <!-- CONTACTO -->
@@ -528,16 +648,140 @@ function cambiarFoto(idPrincipal, miniatura) {
     miniatura.classList.add('activa');
 }
 
-// Lightbox (abrir foto en grande)
-function abrirLightbox(img) {
+// ================================
+// LIGHTBOX CON SWIPE
+// ================================
+
+let fotosActuales = [];       // Array de fotos del producto actual
+let indiceActual = 0;         // Índice de la foto actual
+let tituloActual = '';        // Título del producto
+
+// Abrir lightbox
+function abrirLightbox(img, titulo) {
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = img.src;
+    tituloActual = titulo || '';
+    
+    // Detectar las fotos del grupo
+    const galeria = img.closest('.galeria');
+    
+    if (galeria) {
+        // Si está dentro de una galería, usar todas las miniaturas
+        const miniaturas = galeria.querySelectorAll('.galeria-miniaturas img');
+        fotosActuales = Array.from(miniaturas).map(m => m.src);
+        // Encontrar el índice de la foto que tocó
+        indiceActual = fotosActuales.indexOf(img.src);
+        if (indiceActual === -1) indiceActual = 0;
+    } else {
+        // Si es un producto sin galería, solo esa foto
+        fotosActuales = [img.src];
+        indiceActual = 0;
+    }
+    
+    actualizarLightbox();
     lightbox.classList.add('abierto');
+    document.body.style.overflow = 'hidden'; // Bloquear scroll de fondo
 }
 
+// Cerrar lightbox
 function cerrarLightbox() {
     const lightbox = document.getElementById('lightbox');
     lightbox.classList.remove('abierto');
+    document.body.style.overflow = ''; // Reactivar scroll
 }
+
+// Cambiar foto en lightbox (flechas)
+function cambiarFotoLightbox(direccion) {
+    indiceActual += direccion;
+    
+    if (indiceActual < 0) indiceActual = fotosActuales.length - 1;
+    if (indiceActual >= fotosActuales.length) indiceActual = 0;
+    
+    actualizarLightbox();
+}
+
+// Ir a una foto específica (puntitos)
+function irAFoto(indice) {
+    indiceActual = indice;
+    actualizarLightbox();
+}
+
+// Actualizar todo el lightbox
+function actualizarLightbox() {
+    // Imagen
+    document.getElementById('lightbox-img').src = fotosActuales[indiceActual];
+    
+    // Título
+    document.getElementById('lightbox-titulo').textContent = tituloActual;
+    
+    // Contador
+    document.getElementById('lightbox-contador').textContent = (indiceActual + 1) + ' / ' + fotosActuales.length;
+    
+    // Puntitos
+    const puntitosContainer = document.getElementById('lightbox-puntitos');
+    puntitosContainer.innerHTML = '';
+    
+    fotosActuales.forEach((foto, i) => {
+        const puntito = document.createElement('div');
+        puntito.className = 'puntito' + (i === indiceActual ? ' activo' : '');
+        puntito.onclick = (e) => {
+            e.stopPropagation();
+            irAFoto(i);
+        };
+        puntitosContainer.appendChild(puntito);
+    });
+    
+    // Ocultar flechas si solo hay 1 foto
+    const flechas = document.querySelectorAll('.flecha');
+    flechas.forEach(f => {
+        f.style.display = fotosActuales.length > 1 ? 'block' : 'none';
+    });
+}
+
+// ================================
+// SWIPE (deslizar)
+// ================================
+let touchStartX = 0;
+let touchEndX = 0;
+
+const lightboxContenedor = document.querySelector('.lightbox-contenedor');
+
+document.addEventListener('touchstart', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox.classList.contains('abierto')) {
+        touchStartX = e.changedTouches[0].screenX;
+    }
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('abierto')) return;
+    
+    touchEndX = e.changedTouches[0].screenX;
+    manejarSwipe();
+}, { passive: true });
+
+function manejarSwipe() {
+    const diferencia = touchEndX - touchStartX;
+    const umbral = 50; // Mínimo de píxeles para considerar swipe
+    
+    if (diferencia > umbral) {
+        // Swipe a la derecha → foto anterior
+        cambiarFotoLightbox(-1);
+    } else if (diferencia < -umbral) {
+        // Swipe a la izquierda → foto siguiente
+        cambiarFotoLightbox(1);
+    }
+}
+
+// ================================
+// TECLADO (para compu)
+// ================================
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('abierto')) return;
+    
+    if (e.key === 'ArrowLeft') cambiarFotoLightbox(-1);
+    if (e.key === 'ArrowRight') cambiarFotoLightbox(1);
+    if (e.key === 'Escape') cerrarLightbox();
+});
 </script>
