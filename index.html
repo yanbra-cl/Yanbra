@@ -166,10 +166,9 @@ nav a:hover {
     color: #060d10;
 }
 
-/* CATÁLOGO CARRUSEL */
+/* CATÁLOGO */
 .catalogo {
-    padding: 60px 0;
-    background-color: #0a1418;
+    padding: 90px 40px;
 }
 
 .catalogo h2 {
@@ -178,104 +177,39 @@ nav a:hover {
     font-size: 42px;
     letter-spacing: 8px;
     color: #ffffff;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     text-transform: uppercase;
 }
 
-.carrusel-wrapper {
-    position: relative;
-    width: 100%;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.carrusel {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    width: 100%;
-    gap: 0;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0 20px;
-    gap: 20px;
-}
-
-.carrusel::-webkit-scrollbar {
-    display: none;
-}
-
-.carrusel .producto {
-    flex: 0 0 calc(100% - 40px);
-    max-width: 400px;
-    scroll-snap-align: center;
+.producto {
     background-color: #101c21;
     border: 1px solid #1a2a30;
     overflow: hidden;
     transition: border-color 0.3s;
 }
 
-@media (min-width: 768px) {
-    .carrusel .producto {
-        flex: 0 0 350px;
-        max-width: 350px;
-    }
-}
-
-.carrusel .producto:hover {
+.producto:hover {
     border-color: #e8c674;
 }
 
-.galeria {
+.producto img {
     width: 100%;
-}
-
-.galeria-principal {
-    width: 100%;
-    height: 350px;
+    height: 300px;
     object-fit: cover;
     background-color: #1a2a30;
-    display: block;
     cursor: pointer;
-}
-
-.producto-simple {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    background-color: #1a2a30;
-    display: block;
-    cursor: pointer;
-}
-
-.galeria-miniaturas {
-    display: flex;
-    gap: 8px;
-    padding: 10px;
-    background-color: #0a1418;
-}
-
-.galeria-miniaturas img {
-    width: calc(33.33% - 6px);
-    height: 60px;
-    object-fit: cover;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
-    opacity: 0.6;
-}
-
-.galeria-miniaturas img:hover {
-    opacity: 1;
-}
-
-.galeria-miniaturas img.activa {
-    border-color: #e8c674;
-    opacity: 1;
 }
 
 .producto-info {
     padding: 20px;
-    text-align: center;
 }
 
 .producto-info h3 {
@@ -313,25 +247,44 @@ nav a:hover {
     color: #060d10;
 }
 
-/* PUNTITOS DEL CARRUSEL */
-.carrusel-puntitos {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 25px;
+/* GALERÍA DE FOTOS */
+.galeria {
+    width: 100%;
 }
 
-.carrusel-puntito {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.3);
+.galeria-principal {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #1a2a30;
+    display: block;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.carrusel-puntito.activo {
-    background-color: #e8c674;
+.galeria-miniaturas {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background-color: #0a1418;
+}
+
+.galeria-miniaturas img {
+    width: calc(33.33% - 6px);
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+    opacity: 0.6;
+}
+
+.galeria-miniaturas img:hover {
+    opacity: 1;
+}
+
+.galeria-miniaturas img.activa {
+    border-color: #e8c674;
+    opacity: 1;
 }
 
 /* LIGHTBOX */
@@ -388,7 +341,6 @@ nav a:hover {
     cursor: pointer;
     font-weight: 300;
     line-height: 1;
-    transition: color 0.3s;
 }
 
 .cerrar:hover {
@@ -408,7 +360,6 @@ nav a:hover {
     max-width: 98%;
     max-height: 98%;
     object-fit: contain;
-    cursor: default;
     border: 2px solid #e8c674;
 }
 
@@ -420,7 +371,6 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
     padding: 15px 20px;
     z-index: 10;
     background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
@@ -437,7 +387,6 @@ nav a:hover {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .puntito.activo {
@@ -452,14 +401,7 @@ nav a:hover {
     color: #e8c674;
     cursor: pointer;
     padding: 20px;
-    user-select: none;
-    transition: color 0.3s, transform 0.3s;
     z-index: 10;
-}
-
-.flecha:hover {
-    color: #e8b5cc;
-    transform: translateY(-50%) scale(1.2);
 }
 
 .flecha-izq { left: 5px; }
@@ -570,24 +512,13 @@ footer span {
         font-size: 70px;
         letter-spacing: 8px;
     }
+    .catalogo {
+        padding: 60px 20px;
+    }
     .catalogo h2 {
         font-size: 28px;
         letter-spacing: 5px;
-        margin-bottom: 25px;
-    }
-    .catalogo {
-        padding: 40px 0;
-    }
-    .carrusel {
-        padding: 0 15px;
-        gap: 15px;
-    }
-    .carrusel .producto {
-        flex: 0 0 calc(100% - 30px);
-    }
-    .galeria-principal,
-    .producto-simple {
-        height: 300px;
+        margin-bottom: 40px;
     }
     .contacto h2 {
         font-size: 28px;
@@ -620,7 +551,7 @@ footer span {
     </nav>
 </header>
 
-<!-- MARQUESINA (2 textos para que nunca se corte) -->
+<!-- MARQUESINA -->
 <div class="marquesina">
     <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
     <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
@@ -633,79 +564,79 @@ footer span {
     <a href="#catalogo" class="btn">Ver catálogo</a>
 </section>
 
-<!-- CATÁLOGO CARRUSEL -->
+<!-- CATÁLOGO -->
 <section class="catalogo" id="catalogo">
     <h2 class="animar">Catálogo</h2>
-    
-    <div class="carrusel-wrapper">
-        <div class="carrusel" id="carrusel">
-            
-            <!-- POLERA -->
-            <div class="producto">
-                <div class="galeria">
-                    <img class="galeria-principal" id="foto-principal-polera" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" alt="Polera Oversize" onclick="abrirLightbox(this, 'Polera Oversize')">
-                    <div class="galeria-miniaturas">
-                        <img class="activa" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 1">
-                        <img src="https://i.ibb.co/x8w7dt5s/AF8-DF5-B8-AF8-A-4190-AE77-94-DAD7-C203-B4.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 2">
-                        <img src="https://i.ibb.co/RGJdfDGY/CAMISETA3.png" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 3">
-                    </div>
-                </div>
-                <div class="producto-info">
-                    <h3>Polera Oversize</h3>
-                    <p class="precio">$19.990</p>
-                    <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20la%20polera%20oversize" class="btn-comprar">Comprar</a>
+    <div class="grid">
+        
+        <!-- POLERA -->
+        <div class="producto animar">
+            <div class="galeria">
+                <img class="galeria-principal" id="foto-principal-polera" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" alt="Polera Oversize" onclick="abrirLightbox(this, 'Polera Oversize')">
+                <div class="galeria-miniaturas">
+                    <img class="activa" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 1">
+                    <img src="https://i.ibb.co/x8w7dt5s/AF8-DF5-B8-AF8-A-4190-AE77-94-DAD7-C203-B4.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 2">
+                    <img src="https://i.ibb.co/RGJdfDGY/CAMISETA3.png" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 3">
                 </div>
             </div>
-
-            <!-- HOODIE -->
-            <div class="producto">
-                <img class="producto-simple" src="https://via.placeholder.com/300x300/1a2a30/4db6ac?text=Hoodie" alt="Hoodie" onclick="abrirLightbox(this, 'Hoodie Petróleo')">
-                <div class="producto-info">
-                    <h3>Hoodie Petróleo</h3>
-                    <p class="precio">$34.990</p>
-                    <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20hoodie" class="btn-comprar">Comprar</a>
-                </div>
+            <div class="producto-info">
+                <h3>Polera Oversize</h3>
+                <p class="precio">$19.990</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20la%20polera%20oversize" class="btn-comprar">Comprar</a>
             </div>
-
-            <!-- SHORT -->
-            <div class="producto">
-                <div class="galeria">
-                    <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this, 'Short Baggie')">
-                    <div class="galeria-miniaturas">
-                        <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
-                        <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
-                        <img src="https://i.ibb.co/GQy47Vsf/IMG-3118.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 3">
-                    </div>
-                </div>
-                <div class="producto-info">
-                    <h3>Short Baggie</h3>
-                    <p class="precio">$27.990</p>
-                    <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20short%20baggie" class="btn-comprar">Comprar</a>
-                </div>
-            </div>
-
-            <!-- PANTALÓN -->
-            <div class="producto">
-                <div class="galeria">
-                    <img class="galeria-principal" id="foto-principal-pantalon" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" alt="Pantalón Baggie" onclick="abrirLightbox(this, 'Pantalón Baggie')">
-                    <div class="galeria-miniaturas">
-                        <img class="activa" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 1">
-                        <img src="https://i.ibb.co/j9KVqWcG/IMG-3123.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 2">
-                        <img src="https://i.ibb.co/yFZXwDqh/IMG-3122.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 3">
-                    </div>
-                </div>
-                <div class="producto-info">
-                    <h3>Pantalón Baggie</h3>
-                    <p class="precio">$30.000</p>
-                    <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20pantalon%20baggie" class="btn-comprar">Comprar</a>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <!-- PUNTITOS DEL CARRUSEL -->
-    <div class="carrusel-puntitos" id="carrusel-puntitos"></div>
+        <!-- HOODIE -->
+        <div class="producto animar">
+            <div class="galeria">
+                <img class="galeria-principal" id="foto-principal-hoodie" src="https://i.ibb.co/MD8GW7m9/IMG-3154.jpg" alt="Hoodie Negro" onclick="abrirLightbox(this, 'Hoodie Negro')">
+                <div class="galeria-miniaturas">
+                    <img class="activa" src="https://i.ibb.co/MD8GW7m9/IMG-3154.jpg" onclick="cambiarFoto('foto-principal-hoodie', this)" alt="Hoodie 1">
+                    <img src="https://i.ibb.co/v66VfdcN/IMG-3157.jpg" onclick="cambiarFoto('foto-principal-hoodie', this)" alt="Hoodie 2">
+                </div>
+            </div>
+            <div class="producto-info">
+                <h3>Hoodie Negro</h3>
+                <p class="precio">$34.990</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20hoodie%20negro" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- SHORT -->
+        <div class="producto animar">
+            <div class="galeria">
+                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this, 'Short Baggie')">
+                <div class="galeria-miniaturas">
+                    <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
+                    <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
+                    <img src="https://i.ibb.co/GQy47Vsf/IMG-3118.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 3">
+                </div>
+            </div>
+            <div class="producto-info">
+                <h3>Short Baggie</h3>
+                <p class="precio">$27.990</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20short%20baggie" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+        <!-- PANTALÓN -->
+        <div class="producto animar">
+            <div class="galeria">
+                <img class="galeria-principal" id="foto-principal-pantalon" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" alt="Pantalón Baggie" onclick="abrirLightbox(this, 'Pantalón Baggie')">
+                <div class="galeria-miniaturas">
+                    <img class="activa" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 1">
+                    <img src="https://i.ibb.co/j9KVqWcG/IMG-3123.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 2">
+                    <img src="https://i.ibb.co/yFZXwDqh/IMG-3122.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 3">
+                </div>
+            </div>
+            <div class="producto-info">
+                <h3>Pantalón Baggie</h3>
+                <p class="precio">$30.000</p>
+                <a href="https://wa.me/56964116833?text=Hola!%20Quiero%20el%20pantalon%20baggie" class="btn-comprar">Comprar</a>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <!-- LIGHTBOX -->
@@ -770,32 +701,6 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 elementos.forEach(el => observer.observe(el));
-
-// ================================
-// CARRUSEL - PUNTITOS
-// ================================
-const carrusel = document.getElementById('carrusel');
-const productos = carrusel.querySelectorAll('.producto');
-const puntitosCarrusel = document.getElementById('carrusel-puntitos');
-
-productos.forEach((producto, i) => {
-    const puntito = document.createElement('div');
-    puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
-    puntito.onclick = () => {
-        producto.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    };
-    puntitosCarrusel.appendChild(puntito);
-});
-
-carrusel.addEventListener('scroll', () => {
-    const anchoProducto = carrusel.firstElementChild.offsetWidth + 20;
-    const indice = Math.round(carrusel.scrollLeft / anchoProducto);
-    
-    const todosPuntitos = puntitosCarrusel.querySelectorAll('.carrusel-puntito');
-    todosPuntitos.forEach((p, i) => {
-        p.classList.toggle('activo', i === indice);
-    });
-});
 
 // ================================
 // CAMBIAR FOTO DE GALERÍA
