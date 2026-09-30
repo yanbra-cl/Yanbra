@@ -116,17 +116,61 @@ nav a:hover {
     100% { transform: translateX(-100%); }
 }
 
-/* HERO */
+/* HERO CON IMAGEN ANIMADA */
 .hero {
     height: 90vh;
-    background: radial-gradient(circle at center, #101c21 0%, #0a1418 100%);
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
+    overflow: hidden;
     border-bottom: 1px solid #1a2a30;
+}
+
+.hero-imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    animation: kenburns 15s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(1.15) translate(-2%, -2%);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(6, 13, 16, 0.3) 0%,
+        rgba(6, 13, 16, 0.6) 50%,
+        rgba(6, 13, 16, 0.95) 100%
+    );
+    z-index: 2;
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero h1 {
@@ -136,15 +180,17 @@ nav a:hover {
     color: #4db6ac;
     margin-bottom: 15px;
     line-height: 1;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
 }
 
 .hero p {
     font-size: 16px;
-    color: #b2dfdb;
+    color: #ffffff;
     letter-spacing: 5px;
     margin-bottom: 45px;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 400;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
 }
 
 .btn {
@@ -159,11 +205,13 @@ nav a:hover {
     font-weight: 700;
     text-transform: uppercase;
     transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .btn:hover {
     background: #e8b5cc;
     color: #060d10;
+    transform: translateY(-2px);
 }
 
 /* CATÁLOGO CARRUSEL */
@@ -547,6 +595,10 @@ footer span {
         font-size: 70px;
         letter-spacing: 8px;
     }
+    .hero p {
+        font-size: 13px;
+        letter-spacing: 3px;
+    }
     .catalogo {
         padding: 60px 0 40px 0;
     }
@@ -604,11 +656,15 @@ footer span {
     <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
-<!-- HERO -->
+<!-- HERO CON IMAGEN ANIMADA -->
 <section class="hero">
-    <h1>YANBRA</h1>
-    <p>Ropa chilena · Estilo sin límites</p>
-    <a href="#catalogo" class="btn">Ver catálogo</a>
+    <img class="hero-imagen" src="https://i.ibb.co/MD8GW7m9/IMG-3154.jpg" alt="Yanbra">
+    <div class="hero-overlay"></div>
+    <div class="hero-contenido">
+        <h1>YANBRA</h1>
+        <p>Ropa chilena · Estilo sin límites</p>
+        <a href="#catalogo" class="btn">Ver catálogo</a>
+    </div>
 </section>
 
 <!-- CATÁLOGO CARRUSEL -->
