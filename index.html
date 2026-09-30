@@ -200,7 +200,7 @@ nav a:hover {
 
 .carrusel .producto {
     flex: 0 0 calc(100% - 40px);
-    max-width: 400px;
+    max-width: calc(100% - 40px);
     scroll-snap-align: center;
     background-color: #101c21;
     border: 1px solid #1a2a30;
@@ -212,13 +212,6 @@ nav a:hover {
     border-color: #e8c674;
 }
 
-@media (min-width: 768px) {
-    .carrusel .producto {
-        flex: 0 0 380px;
-        max-width: 380px;
-    }
-}
-
 /* GALERÍA */
 .galeria {
     width: 100%;
@@ -226,7 +219,7 @@ nav a:hover {
 
 .galeria-principal {
     width: 100%;
-    height: 380px;
+    height: 400px;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -235,7 +228,7 @@ nav a:hover {
 
 .producto-simple {
     width: 100%;
-    height: 380px;
+    height: 400px;
     object-fit: cover;
     background-color: #1a2a30;
     display: block;
@@ -568,10 +561,11 @@ footer span {
     }
     .carrusel .producto {
         flex: 0 0 calc(100% - 30px);
+        max-width: calc(100% - 30px);
     }
     .galeria-principal,
     .producto-simple {
-        height: 320px;
+        height: 380px;
     }
     .contacto h2 {
         font-size: 28px;
