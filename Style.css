@@ -114,7 +114,7 @@ nav a:hover {
     100% { transform: translateX(-100%); }
 }
 
-/* HERO CON IMAGEN ANIMADA */
+/* HERO */
 .hero {
     height: 90vh;
     position: relative;
@@ -140,12 +140,8 @@ nav a:hover {
 }
 
 @keyframes kenburns {
-    0% {
-        transform: scale(1) translate(0, 0);
-    }
-    100% {
-        transform: scale(1.25) translate(-3%, -3%);
-    }
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.25) translate(-3%, -3%); }
 }
 
 .hero-overlay {
@@ -213,7 +209,7 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* CATÁLOGO CARRUSEL */
+/* CATÁLOGO */
 .catalogo {
     padding: 130px 0 80px 0;
     background-color: #0a1418;
@@ -259,7 +255,6 @@ nav a:hover {
     border-color: #e8c674;
 }
 
-/* GALERÍA */
 .galeria {
     width: 100%;
 }
@@ -348,7 +343,6 @@ nav a:hover {
     color: #060d10;
 }
 
-/* PUNTITOS DEL CARRUSEL */
 .carrusel-puntitos {
     display: flex;
     gap: 10px;
@@ -546,19 +540,147 @@ nav a:hover {
     border-color: #e8b5cc;
 }
 
-/* FOOTER */
-footer {
+/* FOOTER COMPLETO */
+.footer-completo {
     background-color: #060d10;
-    padding: 30px;
+    padding: 70px 40px 30px 40px;
+    border-top: 1px solid #1a2a30;
+    color: #b2dfdb;
+}
+
+.footer-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+    color: #4db6ac;
+    margin-bottom: 15px;
+}
+
+.footer-desc {
+    color: #b2dfdb;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+}
+
+.footer-titulo {
+    font-family: 'Anton', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: #e8c674;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-lista li {
+    color: #b2dfdb;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    line-height: 1.9;
+}
+
+/* PREGUNTAS FRECUENTES */
+.footer-faq {
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+}
+
+.footer-titulo-faq {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.faq-item {
+    border-bottom: 1px solid #1a2a30;
+}
+
+.faq-pregunta {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 20px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.faq-pregunta:hover {
+    color: #e8c674;
+}
+
+.faq-icono {
+    color: #e8c674;
+    font-size: 20px;
+    font-weight: 300;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.faq-item.activo .faq-icono {
+    transform: rotate(45deg);
+}
+
+.faq-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.activo .faq-respuesta {
+    max-height: 300px;
+    padding-bottom: 20px;
+}
+
+.faq-respuesta p {
+    color: #b2dfdb;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+}
+
+.footer-copy {
     text-align: center;
     color: #5a7a80;
     font-size: 11px;
     letter-spacing: 3px;
+    padding-top: 30px;
     border-top: 1px solid #1a2a30;
     text-transform: uppercase;
 }
 
-footer span {
+.footer-copy span {
     color: #e8c674;
 }
 
@@ -571,10 +693,7 @@ footer span {
 
 .animar.visible {
     opacity: 1;
-    transform: translateY(0);
-}
-
-/* RESPONSIVE */
+    transform: translateY(0); /* RESPONSIVE */
 @media (max-width: 768px) {
     header {
         padding: 10px 15px;
@@ -624,4 +743,27 @@ footer span {
     .contacto h2 {
         font-size: 28px;
     }
+    .footer-completo {
+        padding: 50px 25px 25px 25px;
+    }
+    .footer-info {
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+    .footer-logo {
+        font-size: 22px;
+        letter-spacing: 4px;
+    }
+    .footer-titulo {
+        font-size: 14px;
+    }
+    .footer-titulo-faq {
+        font-size: 16px;
+        letter-spacing: 3px;
+    }
+    .faq-pregunta {
+        font-size: 13px;
+        padding: 18px 0;
+    }
+}
 }
