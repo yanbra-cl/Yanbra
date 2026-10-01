@@ -167,3 +167,19 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') cambiarFotoLightbox(1);
     if (e.key === 'Escape') cerrarLightbox();
 });
+
+// ================================
+// FAQ - PREGUNTAS FRECUENTES
+// ================================
+function toggleFaq(boton) {
+    const item = boton.parentElement;
+    const estaActivo = item.classList.contains('activo');
+    
+    document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('activo');
+    });
+    
+    if (!estaActivo) {
+        item.classList.add('activo');
+    }
+}
