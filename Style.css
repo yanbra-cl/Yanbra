@@ -99,9 +99,10 @@ nav a:hover {
 
 .marquesina p {
     display: inline-block;
-    padding-left: 0%;
-    animation: marquesina 80s linear infinite;
+    padding-left height: 0%;
+    animation: marquesina 80s: linear infinite;
     font-size: 9px;
+    100%;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -133,7 +134,6 @@ nav a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     object-fit: cover;
     z-index: 1;
     animation: kenburns 10s ease-in-out infinite alternate;
@@ -540,7 +540,7 @@ nav a:hover {
     border-color: #e8b5cc;
 }
 
-/* FOOTER COMPLETO */
+/* FOOTER */
 .footer-completo {
     background-color: #060d10;
     padding: 70px 40px 30px 40px;
@@ -549,55 +549,42 @@ nav a:hover {
 }
 
 .footer-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    max-width: 800px;
     margin: 0 auto 60px auto;
+    text-align: center;
 }
 
 .footer-col {
     display: flex;
     flex-direction: column;
-}
-
-.footer-logo {
-    font-family: 'Anton', sans-serif;
-    font-size: 28px;
-    letter-spacing: 6px;
-    color: #4db6ac;
-    margin-bottom: 15px;
-}
-
-.footer-desc {
-    color: #b2dfdb;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    line-height: 1.7;
+    align-items: center;
 }
 
 .footer-titulo {
     font-family: 'Anton', sans-serif;
-    font-size: 16px;
-    letter-spacing: 3px;
+    font-size: 13px;
+    letter-spacing: 2px;
     color: #e8c674;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     text-transform: uppercase;
 }
 
 .footer-lista {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 .footer-lista li {
     color: #b2dfdb;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    line-height: 1.9;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 1.8;
 }
 
-/* PREGUNTAS FRECUENTES */
 .footer-faq {
     max-width: 800px;
     margin: 0 auto 60px auto;
@@ -605,11 +592,11 @@ nav a:hover {
 
 .footer-titulo-faq {
     font-family: 'Anton', sans-serif;
-    font-size: 20px;
-    letter-spacing: 4px;
+    font-size: 16px;
+    letter-spacing: 3px;
     color: #ffffff;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-transform: uppercase;
 }
 
@@ -748,19 +735,16 @@ nav a:hover {
         padding: 50px 25px 25px 25px;
     }
     .footer-info {
-        gap: 30px;
+        gap: 40px;
         margin-bottom: 40px;
     }
-    .footer-logo {
-        font-size: 22px;
-        letter-spacing: 4px;
-    }
     .footer-titulo {
-        font-size: 14px;
+        font-size: 12px;
+        letter-spacing: 1.5px;
     }
     .footer-titulo-faq {
-        font-size: 16px;
-        letter-spacing: 3px;
+        font-size: 14px;
+        letter-spacing: 2px;
     }
     .faq-pregunta {
         font-size: 13px;
