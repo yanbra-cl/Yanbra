@@ -693,7 +693,8 @@ nav a:hover {
 
 .animar.visible {
     opacity: 1;
-    transform: translateY(0); /* RESPONSIVE */
+    transform: translateY(0);
+}/* RESPONSIVE */
 @media (max-width: 768px) {
     header {
         padding: 10px 15px;
@@ -765,5 +766,4 @@ nav a:hover {
         font-size: 13px;
         padding: 18px 0;
     }
-}
 }
