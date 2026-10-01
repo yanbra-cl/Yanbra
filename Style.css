@@ -90,7 +90,7 @@ nav a:hover {
 .marquesina {
     background-color: #e8b5cc;
     color: #060d10;
-    padding: 04px 0;
+    padding: 2px 0;
     overflow: hidden;
     white-space: nowrap;
     border-bottom: 1px solid #1a2a30;
@@ -101,7 +101,7 @@ nav a:hover {
     display: inline-block;
     padding-left: 0%;
     animation: marquesina 80s linear infinite;
-    font-size: 09px;
+    font-size: 7px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -587,8 +587,8 @@ footer span {
         letter-spacing: 1px;
     }
     .marquesina p {
-        font-size: 11px;
-        letter-spacing: 3px;
+        font-size: 7px;
+        letter-spacing: 1.5px;
     }
     .hero h1 {
         font-size: 70px;
