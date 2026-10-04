@@ -34,24 +34,45 @@
     <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra">
 </div>
 
-<!-- HEADER -->
-<header>
-    <div class="logo"><img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra"></div>
+<!-- OVERLAY (fondo oscuro) -->
+<div class="menu-overlay" id="menuOverlay" onclick="cerrarMenu()"></div>
+
+<!-- MENÚ LATERAL -->
+<div class="menu-lateral" id="menuLateral">
     <nav>
-        <a href="https://instagram.com/yanbra.cl" target="_blank" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <a href="index.html" class="activo">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="sobre.html">Sobre Yanbra</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+    
+    <div class="menu-redes">
+        <a href="https://ig.me/m/yanbra.cl" target="_blank" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
             </svg>
         </a>
         <a href="https://tiktok.com/@yanbra.cl" target="_blank" aria-label="TikTok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
             </svg>
         </a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+        <a href="mailto:yanbra.cl@gmail.com" aria-label="Correo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 6-10 7L2 6"></path>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <button class="menu-btn" onclick="abrirMenu()" aria-label="Menú">☰</button>
+    <div class="logo"><img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra"></div>
+    <div style="width: 40px;"></div>
 </header>
 
 <!-- MARQUESINA -->
@@ -67,7 +88,7 @@
     <div class="hero-contenido">
         <h1>YANBRA</h1>
         <p>Ropa chilena · Estilo sin límites</p>
-        <a href="#catalogo" class="btn">Ver catálogo</a>
+        <a href="catalogo.html" class="btn">Ver catálogo</a>
     </div>
 </section>
 
@@ -77,7 +98,6 @@
     
     <div class="carrusel" id="carrusel-ultimo">
         
-        <!-- CHAQUETA -->
         <div class="producto">
             <div class="galeria">
                 <img class="galeria-principal" id="foto-principal-chaqueta" src="https://i.ibb.co/PZ81bs0G/IMG-3226.jpg" alt="Chaqueta" onclick="abrirLightbox(this, 'Chaqueta')">
@@ -108,146 +128,6 @@
         <p class="animar">Nos inspira la calle, el barrio, la gente que se expresa sin ningún filtro. Por eso creamos estos diseños, para quienes muestran su actitud y no necesitan explicarla.</p>
         
         <p class="sobre-frase animar">Describirse es limitarse</p>
-    </div>
-</section>
-
-<!-- CATÁLOGO -->
-<section class="catalogo" id="catalogo">
-    <h2 class="animar">Catálogo</h2>
-    
-    <div class="carrusel" id="carrusel">
-        
-        <!-- POLERA -->
-        <div class="producto">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-polera" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" alt="Polera Oversize" onclick="abrirLightbox(this, 'Polera Oversize')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 1">
-                    <img src="https://i.ibb.co/x8w7dt5s/AF8-DF5-B8-AF8-A-4190-AE77-94-DAD7-C203-B4.jpg" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 2">
-                    <img src="https://i.ibb.co/RGJdfDGY/CAMISETA3.png" onclick="cambiarFoto('foto-principal-polera', this)" alt="Polera 3">
-                </div>
-            </div>
-            <div class="producto-info">
-                <h3>Polera Oversize</h3>
-                <p class="precio">$19.990</p>
-                <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
-
-        <!-- HOODIE NEGRO -->
-        <div class="producto">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-hoodie" src="https://i.ibb.co/MD8GW7m9/IMG-3154.jpg" alt="Hoodie Negro" onclick="abrirLightbox(this, 'Hoodie Negro')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/MD8GW7m9/IMG-3154.jpg" onclick="cambiarFoto('foto-principal-hoodie', this)" alt="Hoodie 1">
-                    <img src="https://i.ibb.co/v66VfdcN/IMG-3157.jpg" onclick="cambiarFoto('foto-principal-hoodie', this)" alt="Hoodie 2">
-                </div>
-            </div>
-            <div class="producto-info">
-                <h3>Hoodie Negro</h3>
-                <p class="precio">$34.990</p>
-                <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
-
-        <!-- SHORT -->
-        <div class="producto">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-short" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" alt="Short Baggie" onclick="abrirLightbox(this, 'Short Baggie')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 1">
-                    <img src="https://i.ibb.co/SXtkdQH7/IMG-3096.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 2">
-                    <img src="https://i.ibb.co/GQy47Vsf/IMG-3118.jpg" onclick="cambiarFoto('foto-principal-short', this)" alt="Short 3">
-                </div>
-            </div>
-            <div class="producto-info">
-                <h3>Short Baggie</h3>
-                <p class="precio">$27.990</p>
-                <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
-
-        <!-- PANTALÓN -->
-        <div class="producto">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-pantalon" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" alt="Pantalón Baggie" onclick="abrirLightbox(this, 'Pantalón Baggie')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/BHk82BKy/IMG-3124.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 1">
-                    <img src="https://i.ibb.co/j9KVqWcG/IMG-3123.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 2">
-                    <img src="https://i.ibb.co/yFZXwDqh/IMG-3122.jpg" onclick="cambiarFoto('foto-principal-pantalon', this)" alt="Pantalón 3">
-                </div>
-            </div>
-            <div class="producto-info">
-                <h3>Pantalón Baggie</h3>
-                <p class="precio">$30.000</p>
-                <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
-
-        <!-- GORRAS -->
-        <div class="producto">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-gorra" src="https://i.ibb.co/zhn9T3F5/IMG-3224.jpg" alt="Gorras" onclick="abrirLightbox(this, 'Gorras')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/zhn9T3F5/IMG-3224.jpg" onclick="cambiarFoto('foto-principal-gorra', this)" alt="Gorra 1">
-                    <img src="https://i.ibb.co/p6bVHq1K/IMG-3223.jpg" onclick="cambiarFoto('foto-principal-gorra', this)" alt="Gorra 2">
-                </div>
-            </div>
-            <div class="producto-info">
-                <h3>Gorras</h3>
-                <p class="precio">$14.990</p>
-                <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
-
-        <!-- CHAQUETA -->
-        <div class="producto">
-            <div class="galeria">
-                <img class="galeria-principal" id="foto-principal-chaqueta-2" src="https://i.ibb.co/PZ81bs0G/IMG-3226.jpg" alt="Chaqueta" onclick="abrirLightbox(this, 'Chaqueta')">
-                <div class="galeria-miniaturas">
-                    <img class="activa" src="https://i.ibb.co/PZ81bs0G/IMG-3226.jpg" onclick="cambiarFoto('foto-principal-chaqueta-2', this)" alt="Chaqueta 1">
-                    <img src="https://i.ibb.co/23gwkY50/IMG-3227.jpg" onclick="cambiarFoto('foto-principal-chaqueta-2', this)" alt="Chaqueta 2">
-                </div>
-            </div>
-            <div class="producto-info">
-                <h3>Chaqueta</h3>
-                <p class="precio">$29.990</p>
-                <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="carrusel-puntitos" id="carrusel-puntitos"></div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
-    <div class="lightbox-cabecera">
-        <div class="lightbox-titulo" id="lightbox-titulo"></div>
-        <div style="display:flex; align-items:center; gap:20px;">
-            <div class="lightbox-contador" id="lightbox-contador"></div>
-            <span class="cerrar" onclick="cerrarLightbox(event)">×</span>
-        </div>
-    </div>
-    <div class="lightbox-contenedor">
-        <span class="flecha flecha-izq" onclick="cambiarFotoLightbox(-1)">‹</span>
-        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
-        <span class="flecha flecha-der" onclick="cambiarFotoLightbox(1)">›</span>
-    </div>
-    <div class="lightbox-pie" onclick="event.stopPropagation()">
-        <div class="puntitos" id="lightbox-puntitos"></div>
-    </div>
-</div>
-
-<!-- CONTACTO -->
-<section class="contacto" id="contacto">
-    <h2 class="animar">Contacto</h2>
-    <p class="animar">Envíos a todo Chile</p>
-    <div class="botones-contacto animar">
-        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="instagram">Instagram</a>
-        <a href="https://tiktok.com/@yanbra.cl" target="_blank" class="tiktok">TikTok</a>
-        <a href="mailto:yanbra.cl@gmail.com" class="correo">Correo</a>
     </div>
 </section>
 
