@@ -679,7 +679,8 @@ nav a:hover {
 .animar.visible {
     opacity: 1;
     transform: translateY(0);
-}/* BARRA AL FINAL */
+}
+/* BARRA AL FINAL */
 .barra-flotante {
     position: relative;
     height: 70px;
