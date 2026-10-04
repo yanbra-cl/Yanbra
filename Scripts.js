@@ -4,17 +4,21 @@
 function abrirMenu() {
     const menu = document.getElementById('menuLateral');
     const overlay = document.getElementById('menuOverlay');
-    menu.classList.add('abierto');
-    overlay.classList.add('abierto');
-    document.body.style.overflow = 'hidden';
+    if (menu && overlay) {
+        menu.classList.add('abierto');
+        overlay.classList.add('abierto');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function cerrarMenu() {
     const menu = document.getElementById('menuLateral');
     const overlay = document.getElementById('menuOverlay');
-    menu.classList.remove('abierto');
-    overlay.classList.remove('abierto');
-    document.body.style.overflow = '';
+    if (menu && overlay) {
+        menu.classList.remove('abierto');
+        overlay.classList.remove('abierto');
+        document.body.style.overflow = '';
+    }
 }
 
 // ================================
@@ -49,46 +53,16 @@ if (elementos.length > 0) {
 }
 
 // ================================
-// CARRUSEL "LO ÚLTIMO"
+// FUNCIÓN GENERAL DE CARRUSEL
 // ================================
-const carruselUltimo = document.getElementById('carrusel-ultimo');
-
-if (carruselUltimo) {
-    const productosUltimo = carruselUltimo.querySelectorAll('.producto');
-    const puntitosUltimo = document.getElementById('carrusel-puntitos-ultimo');
-
-    productosUltimo.forEach((producto, i) => {
-        const puntito = document.createElement('div');
-        puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
-        puntito.onclick = () => {
-            const anchoProducto = carruselUltimo.firstElementChild.offsetWidth;
-            const gap = 20;
-            carruselUltimo.scrollTo({ left: i * (anchoProducto + gap), behavior: 'smooth' });
-        };
-        puntitosUltimo.appendChild(puntito);
-    });
-
-    carruselUltimo.addEventListener('scroll', () => {
-        const anchoProducto = carruselUltimo.firstElementChild.offsetWidth;
-        const gap = 20;
-        const indice = Math.round(carruselUltimo.scrollLeft / (anchoProducto + gap));
-        
-        const todosPuntitos = puntitosUltimo.querySelectorAll('.carrusel-puntito');
-        todosPuntitos.forEach((p, i) => {
-            p.classList.toggle('activo', i === indice);
-        });
-    });
-}
-
-// ================================
-// CARRUSEL CATÁLOGO
-// ================================
-const carrusel = document.getElementById('carrusel');
-
-if (carrusel) {
+function inicializarCarrusel(idCarrusel, idPuntitos) {
+    const carrusel = document.getElementById(idCarrusel);
+    if (!carrusel) return;
+    
     const productos = carrusel.querySelectorAll('.producto');
-    const puntitosCarrusel = document.getElementById('carrusel-puntitos');
-
+    const puntitos = document.getElementById(idPuntitos);
+    if (!puntitos) return;
+    
     productos.forEach((producto, i) => {
         const puntito = document.createElement('div');
         puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
@@ -97,20 +71,26 @@ if (carrusel) {
             const gap = 20;
             carrusel.scrollTo({ left: i * (anchoProducto + gap), behavior: 'smooth' });
         };
-        puntitosCarrusel.appendChild(puntito);
+        puntitos.appendChild(puntito);
     });
-
+    
     carrusel.addEventListener('scroll', () => {
         const anchoProducto = carrusel.firstElementChild.offsetWidth;
         const gap = 20;
         const indice = Math.round(carrusel.scrollLeft / (anchoProducto + gap));
         
-        const todosPuntitos = puntitosCarrusel.querySelectorAll('.carrusel-puntito');
+        const todosPuntitos = puntitos.querySelectorAll('.carrusel-puntito');
         todosPuntitos.forEach((p, i) => {
             p.classList.toggle('activo', i === indice);
         });
     });
 }
+
+// Inicializar todos los carruseles
+inicializarCarrusel('carrusel-ultimo', 'carrusel-puntitos-ultimo');
+inicializarCarrusel('carrusel-superiores', 'carrusel-puntitos-superiores');
+inicializarCarrusel('carrusel-inferiores', 'carrusel-puntitos-inferiores');
+inicializarCarrusel('carrusel-accesorios', 'carrusel-puntitos-accesorios');
 
 // ================================
 // CAMBIAR FOTO DE GALERÍA
