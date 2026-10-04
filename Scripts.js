@@ -26,7 +26,7 @@ const observer = new IntersectionObserver((entries) => {
 elementos.forEach(el => observer.observe(el));
 
 // ================================
-// CARRUSEL - PUNTITOS
+// CARRUSEL CATÁLOGO - PUNTITOS
 // ================================
 const carrusel = document.getElementById('carrusel');
 const productos = carrusel.querySelectorAll('.producto');
@@ -49,6 +49,35 @@ carrusel.addEventListener('scroll', () => {
     const indice = Math.round(carrusel.scrollLeft / (anchoProducto + gap));
     
     const todosPuntitos = puntitosCarrusel.querySelectorAll('.carrusel-puntito');
+    todosPuntitos.forEach((p, i) => {
+        p.classList.toggle('activo', i === indice);
+    });
+});
+
+// ================================
+// CARRUSEL "LO ÚLTIMO" - PUNTITOS
+// ================================
+const carruselUltimo = document.getElementById('carrusel-ultimo');
+const productosUltimo = carruselUltimo.querySelectorAll('.producto');
+const puntitosUltimo = document.getElementById('carrusel-puntitos-ultimo');
+
+productosUltimo.forEach((producto, i) => {
+    const puntito = document.createElement('div');
+    puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
+    puntito.onclick = () => {
+        const anchoProducto = carruselUltimo.firstElementChild.offsetWidth;
+        const gap = 20;
+        carruselUltimo.scrollTo({ left: i * (anchoProducto + gap), behavior: 'smooth' });
+    };
+    puntitosUltimo.appendChild(puntito);
+});
+
+carruselUltimo.addEventListener('scroll', () => {
+    const anchoProducto = carruselUltimo.firstElementChild.offsetWidth;
+    const gap = 20;
+    const indice = Math.round(carruselUltimo.scrollLeft / (anchoProducto + gap));
+    
+    const todosPuntitos = puntitosUltimo.querySelectorAll('.carrusel-puntito');
     todosPuntitos.forEach((p, i) => {
         p.classList.toggle('activo', i === indice);
     });
