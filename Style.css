@@ -208,51 +208,7 @@ nav a:hover {
     color: #060d10;
     transform: translateY(-2px);
 }
-/* LO ÚLTIMO */
-.lo-ultimo {
-    padding: 60px 0 40px 0;
-    background-color: #0a1418;
-    border-bottom: 1px solid #1a2a30;
-}
 
-.lo-ultimo h2 {
-    text-align: center;
-    font-family: 'Anton', sans-serif;
-    font-size: 38px;
-    letter-spacing: 8px;
-    color: #4db6ac;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-}
-
-.carrusel-simple {
-    display: flex;
-    justify-content: center;
-    padding: 0 20px;
-}
-
-.carrusel-simple .producto {
-    width: 100%;
-    max-width: 450px;
-    background-color: #101c21;
-    border: 1px solid #1a2a30;
-    overflow: hidden;
-}
-
-/* RESPONSIVE - LO ÚLTIMO */
-@media (max-width: 768px) {
-    .lo-ultimo {
-        padding: 40px 0 30px 0;
-    }
-    .lo-ultimo h2 {
-        font-size: 28px;
-        letter-spacing: 5px;
-        margin-bottom: 25px;
-    }
-    .carrusel-simple {
-        padding: 0 15px;
-    }
-}
 /* CATÁLOGO */
 .catalogo {
     padding: 130px 0 80px 0;
