@@ -11,7 +11,6 @@ body {
     background-color: #0a1418;
     color: #ffffff;
     line-height: 1.6;
-    padding-bottom: 70px;
 }
 
 /* SPLASH SCREEN */
@@ -586,7 +585,7 @@ nav a:hover {
 
 .footer-faq {
     max-width: 800px;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 40px auto;
 }
 
 .footer-titulo-faq {
@@ -680,27 +679,24 @@ nav a:hover {
 .animar.visible {
     opacity: 1;
     transform: translateY(0);
-}
-/* BARRA FLOTANTE */
+}/* BARRA AL FINAL */
 .barra-flotante {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 65px;
+    position: relative;
+    height: 70px;
     background-color: #060d10;
     border-top: 1px solid #e8c674;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 20px;
-    z-index: 999;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 30px;
 }
 
 .barra-redes {
     display: flex;
-    gap: 18px;
+    gap: 22px;
     align-items: center;
 }
 
@@ -725,7 +721,7 @@ nav a:hover {
 }
 
 .barra-logo img {
-    height: 40px;
+    height: 45px;
     width: auto;
     display: block;
 }
@@ -734,36 +730,8 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-.barra-ayuda {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #e8c674;
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.barra-ayuda:hover {
-    color: #e8b5cc;
-}
-
-.barra-ayuda svg {
-    transition: transform 0.3s;
-}
-
-.barra-ayuda:hover svg {
-    transform: translateY(-3px);
-}
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    body {
-        padding-bottom: 60px;
-    }
     header {
         padding: 10px 15px;
     }
@@ -832,25 +800,20 @@ nav a:hover {
         padding: 18px 0;
     }
     .barra-flotante {
-        height: 55px;
+        height: 60px;
         padding: 0 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        gap: 20px;
     }
     .barra-redes {
-        gap: 14px;
+        gap: 18px;
     }
     .barra-redes svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
     }
     .barra-logo img {
-        height: 35px;
-    }
-    .barra-ayuda {
-        font-size: 10px;
-        letter-spacing: 1px;
-    }
-    .barra-ayuda svg {
-        width: 14px;
-        height: 14px;
+        height: 40px;
     }
 }
