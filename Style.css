@@ -987,7 +987,36 @@ header {
     margin-bottom: 25px;
     text-transform: uppercase;
 }
+/* BOTÓN LEER MÁS */
+.sobre-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #e8c674;
+    color: #e8c674;
+    padding: 14px 32px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
 
+.sobre-btn:hover {
+    background: #e8c674;
+    color: #060d10;
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE - BOTÓN LEER MÁS */
+@media (max-width: 768px) {
+    .sobre-btn {
+        padding: 12px 24px;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+}
 /* RESPONSIVE - CATEGORÍAS */
 @media (max-width: 768px) {
     .categoria {
