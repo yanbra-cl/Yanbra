@@ -208,7 +208,66 @@ nav a:hover {
     color: #060d10;
     transform: translateY(-2px);
 }
+/* SOBRE YANBRA */
+.sobre {
+    padding: 100px 40px;
+    background-color: #0a1418;
+    border-top: 1px solid #1a2a30;
+    border-bottom: 1px solid #1a2a30;
+    text-align: center;
+}
 
+.sobre h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 42px;
+    letter-spacing: 8px;
+    color: #ffffff;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.sobre-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sobre-contenido p {
+    font-size: 16px;
+    line-height: 2;
+    color: #b2dfdb;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+}
+
+.sobre-frase {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+    color: #e8c674;
+    text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 0 !important;
+}
+
+/* RESPONSIVE - SOBRE YANBRA */
+@media (max-width: 768px) {
+    .sobre {
+        padding: 70px 25px;
+    }
+    .sobre h2 {
+        font-size: 28px;
+        letter-spacing: 5px;
+        margin-bottom: 30px;
+    }
+    .sobre-contenido p {
+        font-size: 14px;
+        line-height: 1.9;
+    }
+    .sobre-frase {
+        font-size: 20px;
+        letter-spacing: 3px;
+    }
+}
 /* CATÁLOGO */
 .catalogo {
     padding: 130px 0 80px 0;
