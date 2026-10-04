@@ -185,24 +185,11 @@ function toggleFaq(boton) {
 }
 
 // ================================
-// BARRA FLOTANTE
+// BARRA - VOLVER ARRIBA
 // ================================
-
-// Volver arriba (al tocar el logo)
 function volverArriba() {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
-}
-
-// Abrir FAQ (al tocar "¿Ayuda?")
-function abrirFaq() {
-    const faq = document.querySelector('.footer-faq');
-    if (faq) {
-        faq.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
 }
