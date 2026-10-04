@@ -1,11 +1,32 @@
 // ================================
+// MENÚ HAMBURGUESA
+// ================================
+function abrirMenu() {
+    const menu = document.getElementById('menuLateral');
+    const overlay = document.getElementById('menuOverlay');
+    menu.classList.add('abierto');
+    overlay.classList.add('abierto');
+    document.body.style.overflow = 'hidden';
+}
+
+function cerrarMenu() {
+    const menu = document.getElementById('menuLateral');
+    const overlay = document.getElementById('menuOverlay');
+    menu.classList.remove('abierto');
+    overlay.classList.remove('abierto');
+    document.body.style.overflow = '';
+}
+
+// ================================
 // SPLASH SCREEN
 // ================================
 window.addEventListener('load', () => {
     const splash = document.getElementById('splash');
-    setTimeout(() => {
-        splash.classList.add('oculto');
-    }, 1500);
+    if (splash) {
+        setTimeout(() => {
+            splash.classList.add('oculto');
+        }, 1500);
+    }
 });
 
 // ================================
@@ -13,75 +34,83 @@ window.addEventListener('load', () => {
 // ================================
 const elementos = document.querySelectorAll('.animar');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+if (elementos.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.15
     });
-}, {
-    threshold: 0.15
-});
 
-elementos.forEach(el => observer.observe(el));
+    elementos.forEach(el => observer.observe(el));
+}
 
 // ================================
-// CARRUSEL CATÁLOGO - PUNTITOS
-// ================================
-const carrusel = document.getElementById('carrusel');
-const productos = carrusel.querySelectorAll('.producto');
-const puntitosCarrusel = document.getElementById('carrusel-puntitos');
-
-productos.forEach((producto, i) => {
-    const puntito = document.createElement('div');
-    puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
-    puntito.onclick = () => {
-        const anchoProducto = carrusel.firstElementChild.offsetWidth;
-        const gap = 20;
-        carrusel.scrollTo({ left: i * (anchoProducto + gap), behavior: 'smooth' });
-    };
-    puntitosCarrusel.appendChild(puntito);
-});
-
-carrusel.addEventListener('scroll', () => {
-    const anchoProducto = carrusel.firstElementChild.offsetWidth;
-    const gap = 20;
-    const indice = Math.round(carrusel.scrollLeft / (anchoProducto + gap));
-    
-    const todosPuntitos = puntitosCarrusel.querySelectorAll('.carrusel-puntito');
-    todosPuntitos.forEach((p, i) => {
-        p.classList.toggle('activo', i === indice);
-    });
-});
-
-// ================================
-// CARRUSEL "LO ÚLTIMO" - PUNTITOS
+// CARRUSEL "LO ÚLTIMO"
 // ================================
 const carruselUltimo = document.getElementById('carrusel-ultimo');
-const productosUltimo = carruselUltimo.querySelectorAll('.producto');
-const puntitosUltimo = document.getElementById('carrusel-puntitos-ultimo');
 
-productosUltimo.forEach((producto, i) => {
-    const puntito = document.createElement('div');
-    puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
-    puntito.onclick = () => {
+if (carruselUltimo) {
+    const productosUltimo = carruselUltimo.querySelectorAll('.producto');
+    const puntitosUltimo = document.getElementById('carrusel-puntitos-ultimo');
+
+    productosUltimo.forEach((producto, i) => {
+        const puntito = document.createElement('div');
+        puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
+        puntito.onclick = () => {
+            const anchoProducto = carruselUltimo.firstElementChild.offsetWidth;
+            const gap = 20;
+            carruselUltimo.scrollTo({ left: i * (anchoProducto + gap), behavior: 'smooth' });
+        };
+        puntitosUltimo.appendChild(puntito);
+    });
+
+    carruselUltimo.addEventListener('scroll', () => {
         const anchoProducto = carruselUltimo.firstElementChild.offsetWidth;
         const gap = 20;
-        carruselUltimo.scrollTo({ left: i * (anchoProducto + gap), behavior: 'smooth' });
-    };
-    puntitosUltimo.appendChild(puntito);
-});
-
-carruselUltimo.addEventListener('scroll', () => {
-    const anchoProducto = carruselUltimo.firstElementChild.offsetWidth;
-    const gap = 20;
-    const indice = Math.round(carruselUltimo.scrollLeft / (anchoProducto + gap));
-    
-    const todosPuntitos = puntitosUltimo.querySelectorAll('.carrusel-puntito');
-    todosPuntitos.forEach((p, i) => {
-        p.classList.toggle('activo', i === indice);
+        const indice = Math.round(carruselUltimo.scrollLeft / (anchoProducto + gap));
+        
+        const todosPuntitos = puntitosUltimo.querySelectorAll('.carrusel-puntito');
+        todosPuntitos.forEach((p, i) => {
+            p.classList.toggle('activo', i === indice);
+        });
     });
-});
+}
+
+// ================================
+// CARRUSEL CATÁLOGO
+// ================================
+const carrusel = document.getElementById('carrusel');
+
+if (carrusel) {
+    const productos = carrusel.querySelectorAll('.producto');
+    const puntitosCarrusel = document.getElementById('carrusel-puntitos');
+
+    productos.forEach((producto, i) => {
+        const puntito = document.createElement('div');
+        puntito.className = 'carrusel-puntito' + (i === 0 ? ' activo' : '');
+        puntito.onclick = () => {
+            const anchoProducto = carrusel.firstElementChild.offsetWidth;
+            const gap = 20;
+            carrusel.scrollTo({ left: i * (anchoProducto + gap), behavior: 'smooth' });
+        };
+        puntitosCarrusel.appendChild(puntito);
+    });
+
+    carrusel.addEventListener('scroll', () => {
+        const anchoProducto = carrusel.firstElementChild.offsetWidth;
+        const gap = 20;
+        const indice = Math.round(carrusel.scrollLeft / (anchoProducto + gap));
+        
+        const todosPuntitos = puntitosCarrusel.querySelectorAll('.carrusel-puntito');
+        todosPuntitos.forEach((p, i) => {
+            p.classList.toggle('activo', i === indice);
+        });
+    });
+}
 
 // ================================
 // CAMBIAR FOTO DE GALERÍA
@@ -102,6 +131,8 @@ let tituloActual = '';
 
 function abrirLightbox(img, titulo) {
     const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+    
     tituloActual = titulo || '';
     
     const galeria = img.closest('.galeria');
@@ -123,6 +154,7 @@ function abrirLightbox(img, titulo) {
 
 function cerrarLightbox() {
     const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
     lightbox.classList.remove('abierto');
     document.body.style.overflow = '';
 }
@@ -140,11 +172,17 @@ function irAFoto(indice) {
 }
 
 function actualizarLightbox() {
-    document.getElementById('lightbox-img').src = fotosActuales[indiceActual];
-    document.getElementById('lightbox-titulo').textContent = tituloActual;
-    document.getElementById('lightbox-contador').textContent = (indiceActual + 1) + ' / ' + fotosActuales.length;
-    
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitulo = document.getElementById('lightbox-titulo');
+    const lightboxContador = document.getElementById('lightbox-contador');
     const puntitosContainer = document.getElementById('lightbox-puntitos');
+    
+    if (!lightboxImg) return;
+    
+    lightboxImg.src = fotosActuales[indiceActual];
+    lightboxTitulo.textContent = tituloActual;
+    lightboxContador.textContent = (indiceActual + 1) + ' / ' + fotosActuales.length;
+    
     puntitosContainer.innerHTML = '';
     
     fotosActuales.forEach((foto, i) => {
@@ -169,14 +207,14 @@ let touchEndX = 0;
 
 document.addEventListener('touchstart', (e) => {
     const lightbox = document.getElementById('lightbox');
-    if (lightbox.classList.contains('abierto')) {
+    if (lightbox && lightbox.classList.contains('abierto')) {
         touchStartX = e.changedTouches[0].screenX;
     }
 }, { passive: true });
 
 document.addEventListener('touchend', (e) => {
     const lightbox = document.getElementById('lightbox');
-    if (!lightbox.classList.contains('abierto')) return;
+    if (!lightbox || !lightbox.classList.contains('abierto')) return;
     touchEndX = e.changedTouches[0].screenX;
     manejarSwipe();
 }, { passive: true });
@@ -191,7 +229,7 @@ function manejarSwipe() {
 // TECLADO
 document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightbox');
-    if (!lightbox.classList.contains('abierto')) return;
+    if (!lightbox || !lightbox.classList.contains('abierto')) return;
     if (e.key === 'ArrowLeft') cambiarFotoLightbox(-1);
     if (e.key === 'ArrowRight') cambiarFotoLightbox(1);
     if (e.key === 'Escape') cerrarLightbox();
