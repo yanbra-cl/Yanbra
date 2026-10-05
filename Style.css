@@ -153,7 +153,7 @@ header {
     transform: translateY(-2px);
 }
 
-/* OVERLAY (fondo oscuro al abrir menú) */
+/* OVERLAY */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -334,6 +334,27 @@ header {
     text-transform: uppercase;
     margin-top: 40px;
     margin-bottom: 0 !important;
+}
+
+.sobre-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #e8c674;
+    color: #e8c674;
+    padding: 14px 32px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.sobre-btn:hover {
+    background: #e8c674;
+    color: #060d10;
+    transform: translateY(-2px);
 }
 
 /* CATÁLOGO */
@@ -806,57 +827,26 @@ header {
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    gap: 30px;
+    margin-top: 20
+    /* CATEGORÍAS */
+.categoria {
+    padding: 30px 0 20px 0;
+    border-top: 1px solid #1a2a30;
 }
 
-.barra-redes {
-    display: flex;
-    gap: 22px;
-    align-items: center;
+.categoria:first-of-type {
+    border-top: none;
+    padding-top: 0;
 }
 
-.barra-redes a {
+.categoria-titulo {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    letter-spacing: 5px;
     color: #e8c674;
-    display: flex;
-    align-items: center;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.barra-redes a:hover {
-    color: #e8b5cc;
-    transform: translateY(-2px);
-}
-
-.barra-logo {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-}
-
-.barra-logo img {
-    height: 45px;
-    width: auto;
-    display: block;
-}
-
-.barra-logo:hover {
-    transform: scale(1.1);
-}
-
-/* ANIMACIONES */
-.animar {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s ease, transform 1s ease;
-}
-
-.animar.visible {
-    opacity: 1;
-    transform: translateY(0);
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
 }
 
 /* RESPONSIVE */
@@ -906,6 +896,11 @@ header {
     .sobre-frase {
         font-size: 20px;
         letter-spacing: 3px;
+    }
+    .sobre-btn {
+        padding: 12px 24px;
+        font-size: 11px;
+        letter-spacing: 2px;
     }
     .catalogo {
         padding: 90px 0 60px 0;
@@ -966,124 +961,6 @@ header {
     .barra-logo img {
         height: 40px;
     }
-}
-/* CATEGORÍAS */
-.categoria {
-    padding: 30px 0 20px 0;
-    border-top: 1px solid #1a2a30;
-}
-
-.categoria:first-of-type {
-    border-top: none;
-    padding-top: 0;
-}
-
-.categoria-titulo {
-    font-family: 'Anton', sans-serif;
-    font-size: 26px;
-    letter-spacing: 5px;
-    color: #e8c674;
-    text-align: center;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-}
-/* BOTÓN LEER MÁS */
-.sobre-btn {
-    display: inline-block;
-    background: transparent;
-    border: 1px solid #e8c674;
-    color: #e8c674;
-    padding: 14px 32px;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 3px;
-    font-size: 12px;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    margin-top: 20px;
-}
-
-.sobre-btn:hover {
-    background: #e8c674;
-    color: #060d10;
-    transform: translateY(-2px);
-}
-/* LO ÚLTIMO CON FONDO ANIMADO */
-.lo-ultimo-hero {
-    position: relative;
-    height: 75vh;
-    min-height: 550px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #1a2a30;
-}
-.lo-ultimo-imagen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    animation: kenburns 10s ease-in-out infinite alternate;
-}
-
-.lo-ultimo-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(6, 13, 16, 0.85) 0%,
-        rgba(6, 13, 16, 0.6) 40%,
-        rgba(6, 13, 16, 0.6) 60%,
-        rgba(6, 13, 16, 0.95) 100%
-    );
-    z-index: 2;
-}
-
-.lo-ultimo-contenido {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.lo-ultimo-contenido h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 42px;
-    letter-spacing: 8px;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
-}
-
-/* RESPONSIVE - LO ÚLTIMO HERO */
-@media (max-width: 768px) {
-    .lo-ultimo-contenido h2 {
-        font-size: 28px;
-        letter-spacing: 5px;
-        margin-bottom: 20px;
-    }
-}
-/* RESPONSIVE - BOTÓN LEER MÁS */
-@media (max-width: 768px) {
-    .sobre-btn {
-        padding: 12px 24px;
-        font-size: 11px;
-        letter-spacing: 2px;
-    }
-}
-/* RESPONSIVE - CATEGORÍAS */
-@media (max-width: 768px) {
     .categoria {
         padding: 20px 0 15px 0;
     }
