@@ -1011,14 +1011,14 @@ header {
 /* LO ÚLTIMO CON FONDO ANIMADO */
 .lo-ultimo-hero {
     position: relative;
-    height: 90vh;
+    height: 75vh;
+    min-height: 550px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid #1a2a30;
 }
-
 .lo-ultimo-imagen {
     position: absolute;
     top: 0;
