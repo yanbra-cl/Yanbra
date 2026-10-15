@@ -86,7 +86,7 @@ function inicializarCarrusel(idCarrusel, idPuntitos) {
     });
 }
 
-// Inicializar todos los carruseles (solo los que existan en cada página)
+// Inicializar todos los carruseles (solo los que existan)
 inicializarCarrusel('carrusel-ultimo', 'carrusel-puntitos-ultimo');
 inicializarCarrusel('carrusel-superiores', 'carrusel-puntitos-superiores');
 inicializarCarrusel('carrusel-inferiores', 'carrusel-puntitos-inferiores');
@@ -250,20 +250,20 @@ function volverArriba() {
 let carrito = [];
 
 function abrirCarrito() {
-    const carrito = document.getElementById('carritoLateral');
+    const carritoLateral = document.getElementById('carritoLateral');
     const overlay = document.getElementById('carritoOverlay');
-    if (carrito && overlay) {
-        carrito.classList.add('abierto');
+    if (carritoLateral && overlay) {
+        carritoLateral.classList.add('abierto');
         overlay.classList.add('abierto');
         document.body.style.overflow = 'hidden';
     }
 }
 
 function cerrarCarrito() {
-    const carrito = document.getElementById('carritoLateral');
+    const carritoLateral = document.getElementById('carritoLateral');
     const overlay = document.getElementById('carritoOverlay');
-    if (carrito && overlay) {
-        carrito.classList.remove('abierto');
+    if (carritoLateral && overlay) {
+        carritoLateral.classList.remove('abierto');
         overlay.classList.remove('abierto');
         document.body.style.overflow = '';
     }
@@ -273,6 +273,23 @@ function agregarAlCarrito(nombre, precio, imagen) {
     carrito.push({ nombre, precio, imagen });
     actualizarCarrito();
     abrirCarrito();
+}
+
+function agregarAlCarritoRapido(boton, nombre, precio, imagen) {
+    // Agregar al carrito
+    carrito.push({ nombre, precio, imagen });
+    actualizarCarrito();
+    
+    // Cambiar el botón temporalmente a "✓"
+    const contenidoOriginal = boton.textContent;
+    boton.textContent = '✓';
+    boton.classList.add('agregado');
+    
+    // Volver al "+" después de 1.5s
+    setTimeout(() => {
+        boton.textContent = contenidoOriginal;
+        boton.classList.remove('agregado');
+    }, 1500);
 }
 
 function eliminarDelCarrito(index) {
