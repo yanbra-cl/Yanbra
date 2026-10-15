@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Contacto | Yanbra</title>
     
     <!-- SEO -->
     <meta name="description" content="Contacto Yanbra - Escríbenos por Instagram, TikTok o correo. Envíos a todo Chile.">
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<!-- OVERLAY -->
+<!-- OVERLAY MENÚ -->
 <div class="menu-overlay" id="menuOverlay" onclick="cerrarMenu()"></div>
 
 <!-- MENÚ LATERAL -->
@@ -62,11 +62,15 @@
     </div>
 </div>
 
-<!-- HEADER -->
+<!-- HEADER CON LOGO 3D Y CARRITO -->
 <header>
     <button class="menu-btn" onclick="abrirMenu()" aria-label="Menú">☰</button>
-    <div class="logo"><img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra"></div>
-    <div style="width: 40px;"></div>
+    <a href="index.html" class="logo-container">
+        <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
+    </a>
+    <button class="carrito-btn" onclick="abrirCarrito()" aria-label="Carrito">
+        🛒 <span id="carritoContador">0</span>
+    </button>
 </header>
 
 <!-- MARQUESINA -->
@@ -117,7 +121,7 @@
                 <span class="faq-icono">+</span>
             </button>
             <div class="faq-respuesta">
-                <p>Elige el producto que te guste, toca "Comprar" y te llegará directo a nuestro Instagram para coordinar tu pedido. Es rápido y fácil.</p>
+                <p>Elige el producto que te guste, toca "Comprar" o agrégalo a tu carrito para hacer un pedido de varias prendas. Te llevará directo a nuestro Instagram para coordinar. Es rápido y fácil.</p>
             </div>
         </div>
         
@@ -196,8 +200,8 @@
             </a>
         </div>
         
-        <div class="barra-logo" onclick="volverArriba()">
-            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra">
+        <div class="barra-logo logo-container" onclick="volverArriba()">
+            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
         </div>
         
     </div>
@@ -207,6 +211,30 @@
     </div>
     
 </footer>
+
+<!-- PANEL LATERAL DEL CARRITO -->
+<div class="carrito-overlay" id="carritoOverlay" onclick="cerrarCarrito()"></div>
+<div class="carrito-lateral" id="carritoLateral">
+    <div class="carrito-header">
+        <h3>Tu Carrito</h3>
+        <span class="cerrar-carrito" onclick="cerrarCarrito()">&times;</span>
+    </div>
+    
+    <div class="carrito-items" id="carritoItems">
+        <p class="carrito-vacio">Tu carrito está vacío.</p>
+    </div>
+
+    <div class="carrito-footer">
+        <div class="envio-aviso" id="envioAviso">
+            ¡Agrega $30.000 para envío gratis! 🚚
+        </div>
+        <div class="carrito-total">
+            <span>Total:</span>
+            <span id="carritoTotalPrecio">$0</span>
+        </div>
+        <button class="btn-enviar-pedido" onclick="enviarPedidoInstagram()">Enviar pedido por Instagram DM</button>
+    </div>
+</div>
 
 <script src="Scripts.js"></script>
 </body>
