@@ -34,7 +34,7 @@
     <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra">
 </div>
 
-<!-- OVERLAY -->
+<!-- OVERLAY MENÚ -->
 <div class="menu-overlay" id="menuOverlay" onclick="cerrarMenu()"></div>
 
 <!-- MENÚ LATERAL -->
@@ -68,13 +68,15 @@
     </div>
 </div>
 
-<!-- HEADER CON LOGO 3D -->
+<!-- HEADER CON LOGO 3D Y BOTÓN CARRITO -->
 <header>
     <button class="menu-btn" onclick="abrirMenu()" aria-label="Menú">☰</button>
     <a href="index.html" class="logo-container">
         <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
     </a>
-    <div style="width: 40px;"></div>
+    <button class="carrito-btn" onclick="abrirCarrito()" aria-label="Carrito">
+        🛒 <span id="carritoContador">0</span>
+    </button>
 </header>
 
 <!-- MARQUESINA -->
@@ -111,7 +113,10 @@
             <div class="producto-info">
                 <h3>Chaqueta</h3>
                 <p class="precio">$29.990</p>
-                <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                <div class="acciones-producto">
+                    <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                    <button class="btn-agregar" onclick="agregarAlCarrito('Chaqueta', 29990, 'https://i.ibb.co/PZ81bs0G/IMG-3226.jpg')">+ Agregar</button>
+                </div>
             </div>
         </div>
 
@@ -188,6 +193,30 @@
     </div>
     
 </footer>
+
+<!-- PANEL LATERAL DEL CARRITO -->
+<div class="carrito-overlay" id="carritoOverlay" onclick="cerrarCarrito()"></div>
+<div class="carrito-lateral" id="carritoLateral">
+    <div class="carrito-header">
+        <h3>Tu Carrito</h3>
+        <span class="cerrar-carrito" onclick="cerrarCarrito()">&times;</span>
+    </div>
+    
+    <div class="carrito-items" id="carritoItems">
+        <p class="carrito-vacio">Tu carrito está vacío.</p>
+    </div>
+
+    <div class="carrito-footer">
+        <div class="envio-aviso" id="envioAviso">
+            ¡Agrega $30.000 para envío gratis! 🚚
+        </div>
+        <div class="carrito-total">
+            <span>Total:</span>
+            <span id="carritoTotalPrecio">$0</span>
+        </div>
+        <button class="btn-enviar-pedido" onclick="enviarPedidoInstagram()">Enviar pedido por Instagram DM</button>
+    </div>
+</div>
 
 <script src="Scripts.js"></script>
 </body>
