@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo</title>
+    <title>Catálogo | Yanbra</title>
     
     <!-- SEO -->
     <meta name="description" content="Catálogo Yanbra - Ropa urbana chilena. Poleras, hoodies, chaquetas, shorts, pantalones y gorras.">
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-<!-- OVERLAY -->
+<!-- OVERLAY MENÚ -->
 <div class="menu-overlay" id="menuOverlay" onclick="cerrarMenu()"></div>
 
 <!-- MENÚ LATERAL -->
@@ -62,11 +62,15 @@
     </div>
 </div>
 
-<!-- HEADER -->
+<!-- HEADER CON LOGO 3D Y CARRITO -->
 <header>
     <button class="menu-btn" onclick="abrirMenu()" aria-label="Menú">☰</button>
-    <div class="logo"><img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra"></div>
-    <div style="width: 40px;"></div>
+    <a href="index.html" class="logo-container">
+        <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
+    </a>
+    <button class="carrito-btn" onclick="abrirCarrito()" aria-label="Carrito">
+        🛒 <span id="carritoContador">0</span>
+    </button>
 </header>
 
 <!-- MARQUESINA -->
@@ -98,7 +102,10 @@
                 <div class="producto-info">
                     <h3>Polera Oversize</h3>
                     <p class="precio">$19.990</p>
-                    <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                    <div class="acciones-producto">
+                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Polera Oversize', 19990, 'https://i.ibb.co/xqzMH0yD/F5-C597-AF-A07-A-404-A-917-E-33108-ECEACB2.jpg')">+ Agregar</button>
+                    </div>
                 </div>
             </div>
 
@@ -114,7 +121,10 @@
                 <div class="producto-info">
                     <h3>Hoodie Negro</h3>
                     <p class="precio">$34.990</p>
-                    <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                    <div class="acciones-producto">
+                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Hoodie Negro', 34990, 'https://i.ibb.co/MD8GW7m9/IMG-3154.jpg')">+ Agregar</button>
+                    </div>
                 </div>
             </div>
 
@@ -130,7 +140,10 @@
                 <div class="producto-info">
                     <h3>Chaqueta</h3>
                     <p class="precio">$29.990</p>
-                    <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                    <div class="acciones-producto">
+                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Chaqueta', 29990, 'https://i.ibb.co/PZ81bs0G/IMG-3226.jpg')">+ Agregar</button>
+                    </div>
                 </div>
             </div>
 
@@ -158,7 +171,10 @@
                 <div class="producto-info">
                     <h3>Short Baggie</h3>
                     <p class="precio">$27.990</p>
-                    <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                    <div class="acciones-producto">
+                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Short Baggie', 27990, 'https://i.ibb.co/nqyGrKjV/7806-BB54-B0-E5-4-B26-A610-D3-E583-B53403.png')">+ Agregar</button>
+                    </div>
                 </div>
             </div>
 
@@ -175,7 +191,10 @@
                 <div class="producto-info">
                     <h3>Pantalón Baggie</h3>
                     <p class="precio">$30.000</p>
-                    <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                    <div class="acciones-producto">
+                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Pantalón Baggie', 30000, 'https://i.ibb.co/BHk82BKy/IMG-3124.jpg')">+ Agregar</button>
+                    </div>
                 </div>
             </div>
 
@@ -202,7 +221,10 @@
                 <div class="producto-info">
                     <h3>Gorras</h3>
                     <p class="precio">$14.990</p>
-                    <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                    <div class="acciones-producto">
+                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
+                        <button class="btn-agregar" onclick="agregarAlCarrito('Gorras', 14990, 'https://i.ibb.co/zhn9T3F5/IMG-3224.jpg')">+ Agregar</button>
+                    </div>
                 </div>
             </div>
 
@@ -278,8 +300,8 @@
             </a>
         </div>
         
-        <div class="barra-logo" onclick="volverArriba()">
-            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra">
+        <div class="barra-logo logo-container" onclick="volverArriba()">
+            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
         </div>
         
     </div>
@@ -289,6 +311,30 @@
     </div>
     
 </footer>
+
+<!-- PANEL LATERAL DEL CARRITO -->
+<div class="carrito-overlay" id="carritoOverlay" onclick="cerrarCarrito()"></div>
+<div class="carrito-lateral" id="carritoLateral">
+    <div class="carrito-header">
+        <h3>Tu Carrito</h3>
+        <span class="cerrar-carrito" onclick="cerrarCarrito()">&times;</span>
+    </div>
+    
+    <div class="carrito-items" id="carritoItems">
+        <p class="carrito-vacio">Tu carrito está vacío.</p>
+    </div>
+
+    <div class="carrito-footer">
+        <div class="envio-aviso" id="envioAviso">
+            ¡Agrega $30.000 para envío gratis! 🚚
+        </div>
+        <div class="carrito-total">
+            <span>Total:</span>
+            <span id="carritoTotalPrecio">$0</span>
+        </div>
+        <button class="btn-enviar-pedido" onclick="enviarPedidoInstagram()">Enviar pedido por Instagram DM</button>
+    </div>
+</div>
 
 <script src="Scripts.js"></script>
 </body>
