@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yanbra | Ropa Urbana</title>
     
-    <!-- SEO -->
     <meta name="description" content="Yanbra - Ropa urbana chilena. Streetwear nacional con diseños propios. Envíos a todo Chile, gratis sobre $30.000.">
     <meta name="keywords" content="ropa urbana, streetwear, ropa chilena, yanbra, poleras oversize, hoodie, baggy">
     
-    <!-- Open Graph -->
     <meta property="og:title" content="Yanbra | Ropa Urbana">
     <meta property="og:description" content="Ropa urbana chilena. Estilo sin límites.">
     <meta property="og:image" content="https://i.ibb.co/MD8GW7m9/IMG-3154.jpg">
     <meta property="og:type" content="website">
     
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N53K4M8FVQ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -29,15 +26,12 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN -->
 <div class="splash" id="splash">
     <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra">
 </div>
 
-<!-- OVERLAY MENÚ -->
 <div class="menu-overlay" id="menuOverlay" onclick="cerrarMenu()"></div>
 
-<!-- MENÚ LATERAL -->
 <div class="menu-lateral" id="menuLateral">
     <nav>
         <a href="index.html" class="activo">Inicio</a>
@@ -68,24 +62,27 @@
     </div>
 </div>
 
-<!-- HEADER CON LOGO 3D Y CARRITO -->
 <header>
     <button class="menu-btn" onclick="abrirMenu()" aria-label="Menú">☰</button>
     <a href="index.html" class="logo-container">
-        <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
+        <div class="logo-3d-wrapper">
+            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
+        </div>
     </a>
     <button class="carrito-btn" onclick="abrirCarrito()" aria-label="Carrito">
         🛒 <span id="carritoContador">0</span>
     </button>
 </header>
 
-<!-- MARQUESINA -->
 <div class="marquesina">
     <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
     <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
-<!-- HERO -->
 <section class="hero">
     <img class="hero-imagen" src="https://i.ibb.co/MD8GW7m9/IMG-3154.jpg" alt="Yanbra">
     <div class="hero-overlay"></div>
@@ -96,7 +93,6 @@
     </div>
 </section>
 
-<!-- LO ÚLTIMO -->
 <section class="catalogo" id="lo-ultimo">
     <h2 class="animar">Lo Último</h2>
     
@@ -125,7 +121,6 @@
     <div class="carrusel-puntitos" id="carrusel-puntitos-ultimo"></div>
 </section>
 
-<!-- SOBRE YANBRA (preview) -->
 <section class="sobre" id="sobre">
     <h2 class="animar">Sobre Yanbra</h2>
     
@@ -136,7 +131,6 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer-completo">
     
     <div class="footer-info">
@@ -158,7 +152,6 @@
         </div>
     </div>
     
-    <!-- BARRA AL FINAL -->
     <div class="barra-flotante" id="barraFlotante">
         
         <div class="barra-redes">
@@ -183,7 +176,13 @@
         </div>
         
         <div class="barra-logo logo-container" onclick="volverArriba()">
-            <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
+            <div class="logo-3d-wrapper">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
+            </div>
         </div>
         
     </div>
@@ -194,7 +193,6 @@
     
 </footer>
 
-<!-- PANEL LATERAL DEL CARRITO -->
 <div class="carrito-overlay" id="carritoOverlay" onclick="cerrarCarrito()"></div>
 <div class="carrito-lateral" id="carritoLateral">
     <div class="carrito-header">
