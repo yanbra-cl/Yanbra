@@ -78,8 +78,9 @@ header {
     display: block;
     transform-style: preserve-3d;
     animation: girarLogo3D 10s linear infinite;
+    filter: drop-shadow(0 4px 8px rgba(232, 198, 116, 0.45))
+            drop-shadow(0 0 15px rgba(232, 198, 116, 0.25));
 }
-
 @keyframes girarLogo3D {
     0% { transform: rotateY(0deg); }
     100% { transform: rotateY(360deg); }
