@@ -867,6 +867,39 @@ header {
     transform: scale(1.1);
 }
 
+/* =========================================
+   EFECTO 3D PARA EL LOGO (Estilo Stodak)
+========================================= */
+.logo-container {
+    perspective: 1000px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-3d {
+    width: auto;
+    max-height: 90px; /* Se ajusta al alto original del header */
+    display: block;
+    transform-style: preserve-3d;
+    animation: girarLogo3D 6s linear infinite;
+}
+
+/* Animación de giro horizontal en el eje Y */
+@keyframes girarLogo3D {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Pausar el giro al pasar el cursor por encima (opcional) */
+.logo-container:hover .logo-3d {
+    animation-play-state: paused;
+}
+
 /* ANIMACIONES */
 .animar {
     opacity: 0;
@@ -878,6 +911,7 @@ header {
     opacity: 1;
     transform: translateY(0);
 }
+
 /* CATEGORÍAS */
 .categoria {
     padding: 30px 0 20px 0;
@@ -906,6 +940,9 @@ header {
     }
     .logo img {
         height: 60px;
+    }
+    .logo-3d {
+        max-height: 60px; /* Ajuste proporcional para celulares */
     }
     .menu-btn {
         font-size: 26px;
