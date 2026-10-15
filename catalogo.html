@@ -74,8 +74,8 @@
 </header>
 
 <div class="marquesina">
-    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · Y="ANBRA · DESCRIBIRSE ES LIMITARbtn-comSE ·</ppr>
-    <p>YANBRA ·ar DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
+    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
+    <p>YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE · YANBRA · DESCRIBIRSE ES LIMITARSE ·</p>
 </div>
 
 <section class="catalogo" id="catalogo">
@@ -165,7 +165,7 @@
                     <h3>Short Baggie</h3>
                     <p class="precio">$27.990</p>
                     <div class="acciones-producto">
-                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class">Comprar</a>
+                        <a href="https://ig.me/m/yanbra.cl" target="_blank" class="btn-comprar">Comprar</a>
                     </div>
                 </div>
             </div>
@@ -234,4 +234,99 @@
     </div>
     <div class="lightbox-contenedor">
         <span class="flecha flecha-izq" onclick="cambiarFotoLightbox(-1)">‹</span>
-        <img id="lightbox-img" src="" alt="" onclick="event.stopProp
+        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+        <span class="flecha flecha-der" onclick="cambiarFotoLightbox(1)">›</span>
+    </div>
+    <div class="lightbox-pie" onclick="event.stopPropagation()">
+        <div class="puntitos" id="lightbox-puntitos"></div>
+    </div>
+</div>
+
+<footer class="footer-completo">
+    
+    <div class="footer-info">
+        <div class="footer-col">
+            <h4 class="footer-titulo">ENVÍOS</h4>
+            <ul class="footer-lista">
+                <li>A todo Chile</li>
+                <li>Gratis sobre $30.000</li>
+                <li>3-7 días hábiles</li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4 class="footer-titulo">COMPRAS</h4>
+            <ul class="footer-lista">
+                <li>Transferencia bancaria</li>
+                <li>Coordinación por Instagram</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="barra-flotante" id="barraFlotante">
+        
+        <div class="barra-redes">
+            <a href="https://ig.me/m/yanbra.cl" target="_blank" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="https://tiktok.com/@yanbra.cl" target="_blank" aria-label="TikTok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+            </a>
+            <a href="mailto:yanbra.cl@gmail.com" aria-label="Correo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 6-10 7L2 6"></path>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="barra-logo logo-container" onclick="volverArriba()">
+            <div class="logo-3d-wrapper">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="" class="logo-3d-capa">
+                <img src="https://i.ibb.co/v4tGFywN/IMG-3111.png" alt="Yanbra" class="logo-3d">
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="footer-copy">
+        © 2025 <span>Yanbra</span> · Todos los derechos reservados
+    </div>
+    
+</footer>
+
+<div class="carrito-overlay" id="carritoOverlay" onclick="cerrarCarrito()"></div>
+<div class="carrito-lateral" id="carritoLateral">
+    <div class="carrito-header">
+        <h3>Tu Carrito</h3>
+        <span class="cerrar-carrito" onclick="cerrarCarrito()">&times;</span>
+    </div>
+    
+    <div class="carrito-items" id="carritoItems">
+        <p class="carrito-vacio">Tu carrito está vacío.</p>
+    </div>
+
+    <div class="carrito-footer">
+        <div class="envio-aviso" id="envioAviso">
+            ¡Agrega $30.000 para envío gratis! 🚚
+        </div>
+        <div class="carrito-total">
+            <span>Total:</span>
+            <span id="carritoTotalPrecio">$0</span>
+        </div>
+        <button class="btn-enviar-pedido" onclick="enviarPedidoInstagram()">Enviar pedido por Instagram DM</button>
+    </div>
+</div>
+
+<script src="Scripts.js"></script>
+</body>
+</html>
