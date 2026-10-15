@@ -526,19 +526,57 @@ header {
     letter-spacing: 1px;
 }
 
-/* BOTONES DEL PRODUCTO (Comprar + Agregar) */
+/* BOTONES DEL PRODUCTO */
+.producto {
+    position: relative;
+}
+
+.btn-agregar-flotante {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #060d10;
+    border: 2px solid #e8c674;
+    color: #e8c674;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-agregar-flotante:hover {
+    background-color: #e8c674;
+    color: #060d10;
+    transform: scale(1.1);
+}
+
+.btn-agregar-flotante.agregado {
+    background-color: #4db6ac;
+    border-color: #4db6ac;
+    color: #060d10;
+    font-size: 18px;
+}
+
 .acciones-producto {
     display: flex;
     gap: 8px;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .btn-comprar {
     display: inline-block;
     background: linear-gradient(135deg, #f0d68c 0%, #e8c674 50%, #b8944a 100%);
     color: #060d10;
-    padding: 12px 20px;
+    padding: 12px 28px;
     text-decoration: none;
     font-size: 11px;
     letter-spacing: 2px;
@@ -549,24 +587,6 @@ header {
 
 .btn-comprar:hover {
     background: #e8b5cc;
-    color: #060d10;
-}
-
-.btn-agregar {
-    background: transparent;
-    border: 1px solid #4db6ac;
-    color: #4db6ac;
-    padding: 12px 18px;
-    font-size: 11px;
-    letter-spacing: 1px;
-    font-weight: 700;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.3s;
-}
-
-.btn-agregar:hover {
-    background: #4db6ac;
     color: #060d10;
 }
 
