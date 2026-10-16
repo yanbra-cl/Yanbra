@@ -247,7 +247,11 @@ function volverArriba() {
 // ================================
 // CARRITO DE COMPRAS
 // ================================
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('yanbra-carrito')) || [];
+
+function guardarCarrito() {
+    localStorage.setItem('yanbra-carrito', JSON.stringify(carrito));
+}
 
 function abrirCarrito() {
     const carritoLateral = document.getElementById('carritoLateral');
