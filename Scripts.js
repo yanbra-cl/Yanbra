@@ -245,7 +245,7 @@ function volverArriba() {
 }
 
 // ================================
-// CARRITO DE COMPRAS
+// CARRITO DE COMPRAS (con persistencia)
 // ================================
 let carrito = JSON.parse(localStorage.getItem('yanbra-carrito')) || [];
 
@@ -275,6 +275,7 @@ function cerrarCarrito() {
 
 function agregarAlCarrito(nombre, precio, imagen) {
     carrito.push({ nombre, precio, imagen });
+    guardarCarrito();
     actualizarCarrito();
     abrirCarrito();
 }
@@ -282,6 +283,7 @@ function agregarAlCarrito(nombre, precio, imagen) {
 function agregarAlCarritoRapido(boton, nombre, precio, imagen) {
     // Agregar al carrito
     carrito.push({ nombre, precio, imagen });
+    guardarCarrito();
     actualizarCarrito();
     
     // Cambiar el botón temporalmente a "✓"
@@ -298,6 +300,7 @@ function agregarAlCarritoRapido(boton, nombre, precio, imagen) {
 
 function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
+    guardarCarrito();
     actualizarCarrito();
 }
 
@@ -377,6 +380,11 @@ function enviarPedidoInstagram() {
         
         // Abrir Instagram
         window.open('https://ig.me/m/yanbra.cl', '_blank');
+        
+        // Limpiar carrito después de enviar
+        carrito = [];
+        guardarCarrito();
+        actualizarCarrito();
     }).catch(() => {
         // Si falla el copiado, al menos abrir Instagram
         window.open('https://ig.me/m/yanbra.cl', '_blank');
