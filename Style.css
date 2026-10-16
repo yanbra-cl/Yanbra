@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;700&display=swap');
 
 * {
     margin: 0;
@@ -58,7 +58,7 @@ header {
     border-bottom: none;
 }
 
-/* LOGO 3D CON GIRO + CAMBIO A TEXTO */
+/* LOGO 3D CON GIRO Y SOMBRA */
 .logo-container {
     perspective: 1000px;
     display: inline-flex;
@@ -72,44 +72,15 @@ header {
     justify-content: center;
     transform-style: preserve-3d;
     animation: girarLogo3D 10s linear infinite;
-    position: relative;
-    height: 90px;
-    min-width: 130px;
 }
 
-.logo-cara {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Cara frontal: la imagen del logo */
-.logo-frente {
-    max-height: 90px;
+.logo-3d {
     width: auto;
+    max-height: 90px;
+    display: block;
+    transform-style: preserve-3d;
     filter: drop-shadow(0 4px 8px rgba(232, 198, 116, 0.45))
             drop-shadow(0 0 15px rgba(232, 198, 116, 0.25));
-    opacity: 1;
-}
-
-/* Cara trasera: el texto YANBRA en Cinzel */
-.logo-atras {
-    font-family: 'Cinzel', serif;
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: 6px;
-    color: #4db6ac;
-    text-transform: uppercase;
-    opacity: 0;
-    white-space: nowrap;
-    filter: drop-shadow(0 0 10px rgba(77, 182, 172, 0.5));
-    line-height: 1;
 }
 
 @keyframes girarLogo3D {
@@ -121,30 +92,7 @@ header {
     }
 }
 
-/* Alternar cara visible según el ángulo del giro */
-@keyframes mostrarFrente {
-    0%, 42% { opacity: 1; }
-    48%, 92% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes mostrarAtras {
-    0%, 42% { opacity: 0; }
-    48%, 92% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-.logo-frente {
-    animation: mostrarFrente 10s linear infinite;
-}
-
-.logo-atras {
-    animation: mostrarAtras 10s linear infinite;
-}
-
-.logo-container:hover .logo-3d-wrapper,
-.logo-container:hover .logo-frente,
-.logo-container:hover .logo-atras {
+.logo-container:hover .logo-3d-wrapper {
     animation-play-state: paused;
 }
 
@@ -1208,16 +1156,8 @@ header {
     header {
         padding: 10px 15px;
     }
-    .logo-3d-wrapper {
-        height: 60px;
-        min-width: 90px;
-    }
-    .logo-frente {
+    .logo-3d {
         max-height: 60px;
-    }
-    .logo-atras {
-        font-size: 22px;
-        letter-spacing: 4px;
     }
     .menu-btn {
         font-size: 26px;
