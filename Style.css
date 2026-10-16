@@ -58,12 +58,6 @@ header {
     border-bottom: none;
 }
 
-.logo img {
-    height: 90px;
-    width: auto;
-    display: block;
-}
-
 /* LOGO 3D CON GIRO Y SOMBRA */
 .logo-container {
     perspective: 1000px;
@@ -87,11 +81,6 @@ header {
     transform-style: preserve-3d;
     filter: drop-shadow(0 4px 8px rgba(232, 198, 116, 0.45))
             drop-shadow(0 0 15px rgba(232, 198, 116, 0.25));
-}
-
-/* Capas de extrusión (opcional, sutil) */
-.logo-3d-capa {
-    display: none;
 }
 
 @keyframes girarLogo3D {
@@ -487,15 +476,6 @@ header {
     cursor: pointer;
 }
 
-.producto-simple {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    background-color: #1a2a30;
-    display: block;
-    cursor: pointer;
-}
-
 .galeria-miniaturas {
     display: flex;
     gap: 8px;
@@ -627,6 +607,7 @@ header {
 .carrusel-puntito.activo {
     background-color: #e8c674;
 }
+
 /* LIGHTBOX */
 .lightbox {
     display: none;
@@ -1242,8 +1223,7 @@ header {
         flex: 0 0 calc(100% - 30px);
         max-width: calc(100% - 30px);
     }
-    .galeria-principal,
-    .producto-simple {
+    .galeria-principal {
         height: 380px;
     }
     .contacto h2 {
